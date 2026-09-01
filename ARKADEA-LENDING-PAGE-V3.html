@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<!-- =============================================================
+     ARKADEA WEB — LANDING PAGE (arkadea.web.id)
+     -------------------------------------------------------------
+     Teknologi  : HTML5 + CSS3 + Vanilla JS (tanpa library)
+     Font       : Poppins (display) + Inter (body) — Google Fonts
+     Icon       : Font Awesome CDN
+     Scope CSS  : semua di dalam ".ark-page" (aman untuk Blogger)
+     Konfigurasi: lihat "ARKADEA_CONFIG" di bagian <script> paling
+                  bawah (brand, WhatsApp, harga, voucher, promo,
+                  countdown, data toast). JANGAN hapus blok itu.
+     Daftar Widget:
+     Announcement • Navbar • Hero • Trust • Problem • Solution
+     Customer Experience (slider parallax) • Services • Features
+     Portfolio • Timeline • Pricing • Promo (ex-Voucher)
+     Checkout(Modal) • Testimonials • FAQ • CTA • Footer • Toast
+     BackToTop • ScrollProgress
+     ============================================================= -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== ARKADEA WEB — SEO & OPEN GRAPH (jangan dihapus) ===== -->
+<title>Arkadea Web — Jasa Pembuatan Website Profesional &amp; Terjangkau</title>
+<meta name="description" content="Jasa pembuatan website profesional, modern, responsive, dan terjangkau untuk bisnis, UMKM, sekolah, portfolio, dan berbagai kebutuhan lainnya.">
+<meta name="theme-color" content="#2563EB">
+<meta property="og:title" content="Arkadea Web — Jasa Pembuatan Website Profesional & Terjangkau">
+<meta property="og:description" content="Website keren bikin bisnismu makin dipercaya. Modern, cepat, responsive, harga terjangkau.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arkadea.web.id">
+<meta property="og:image" content="https://picsum.photos/seed/arkadea-og-banner/1200/630">
+<link rel="canonical" href="https://arkadea.web.id">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563EB'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='34' font-weight='800' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<!-- ===== ARKADEA WEB — FONTS & ICONS (CDN, boleh diganti) ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+/* =============================================================
+   ARKADEA WEB — GLOBAL BASE (CSS)
+   Reset minimal + variabel warna. Semua komponen di-scope ke
+   ".ark-page" agar tidak bentrok dengan CSS Blogger.
+   ============================================================= */
+:where(html,body){margin:0;padding:0} /* reset minimal — jangan dihapus */
+html.ark-lock{overflow:hidden}          /* kunci scroll saat modal terbuka */
+
+.ark-page{
+  --ark-blue:#2563EB; --ark-blue-d:#1D4ED8; --ark-sky:#60A5FA; --ark-sky-2:#0EA5E9;
+  --ark-cyan:#06B6D4; --ark-ink:#0F172A; --ark-muted:#64748B; --ark-line:#E2E8F0;
+  --ark-bg:#F8FAFC; --ark-soft:#EFF6FF; --ark-white:#FFFFFF;
+  --ark-grad:linear-gradient(120deg,#2563EB 10%,#06B6D4 90%);
+  --ark-grad-soft:linear-gradient(120deg,rgba(37,99,235,.10),rgba(6,182,212,.12));
+  --ark-sh-sm:0 6px 18px -8px rgba(15,23,42,.12);
+  --ark-sh-md:0 18px 40px -18px rgba(37,99,235,.30);
+  --ark-sh-lg:0 32px 64px -26px rgba(37,99,235,.38);
+  --ark-r-sm:12px; --ark-r-md:16px; --ark-r-lg:20px; --ark-r-xl:26px;
+  --ark-fd:"Poppins",sans-serif; --ark-fb:"Inter",sans-serif;
+  font-family:var(--ark-fb); color:var(--ark-ink); background:var(--ark-white);
+  line-height:1.65; overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+.ark-page *,.ark-page *::before,.ark-page *::after{box-sizing:border-box}
+.ark-page :is(h1,h2,h3,h4,p,ul,ol,figure,blockquote){margin:0;padding:0}
+.ark-page ul{list-style:none}
+.ark-page img{max-width:100%;display:block}
+.ark-page a{color:inherit;text-decoration:none}
+.ark-page button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.ark-page input,.ark-page select{font:inherit}
+.ark-page ::selection{background:rgba(37,99,235,.18)}
+.ark-page :focus-visible{outline:3px solid rgba(37,99,235,.45);outline-offset:2px;border-radius:6px}
+
+/* ---------- util umum ---------- */
+.ark-page .ark-container{max-width:1180px;margin-inline:auto;padding-inline:clamp(20px,4vw,32px)}
+.ark-page .ark-section{position:relative;padding:clamp(68px,9vw,108px) 0}
+.ark-page .ark-section-head{max-width:680px;margin:0 auto clamp(36px,5vw,56px);text-align:center}
+.ark-page .ark-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--ark-fd);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ark-blue);background:var(--ark-soft);border:1px solid rgba(37,99,235,.18);padding:8px 16px;border-radius:999px;margin-bottom:16px}
+.ark-page .ark-h2{font-family:var(--ark-fd);font-weight:800;font-size:clamp(26px,3.6vw,38px);line-height:1.2;letter-spacing:-.01em}
+.ark-page .ark-sub{color:var(--ark-muted);font-size:15.5px;margin-top:14px}
+.ark-page .ark-gradient-text{background:var(--ark-grad);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* tombol */
+.ark-page .ark-btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--ark-fd);font-weight:600;font-size:15px;line-height:1;white-space:nowrap;border-radius:14px;padding:14px 26px;transition:transform .25s,box-shadow .25s,background .25s,color .25s,border-color .25s}
+.ark-page .ark-btn-primary{background:var(--ark-grad);color:#fff;box-shadow:0 14px 30px -12px rgba(37,99,235,.55)}
+.ark-page .ark-btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px -14px rgba(37,99,235,.6)}
+.ark-page .ark-btn-ghost{background:#fff;border:1.5px solid var(--ark-line);color:var(--ark-ink)}
+.ark-page .ark-btn-ghost:hover{border-color:var(--ark-blue);color:var(--ark-blue);background:var(--ark-soft);transform:translateY(-2px)}
+.ark-page .ark-btn-soft{background:var(--ark-soft);color:var(--ark-blue);border-radius:12px;padding:12px 18px;font-size:14px}
+.ark-page .ark-btn-soft:hover{background:#DBEAFE}
+.ark-page .ark-btn-white{background:#fff;color:var(--ark-blue);box-shadow:0 16px 34px -14px rgba(2,20,60,.55)}
+.ark-page .ark-btn-white:hover{transform:translateY(-2px)}
+.ark-page .ark-btn-outline-w{border:1.5px solid rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.08)}
+.ark-page .ark-btn-outline-w:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.ark-page .ark-btn-sm{padding:10px 18px;font-size:13.5px;border-radius:12px}
+.ark-page .ark-btn-lg{padding:16px 32px;font-size:16px;border-radius:16px}
+.ark-page .ark-btn-block{width:100%}
+.ark-page .ark-ripple{position:absolute;z-index:-1;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);animation:ark-ripple .65s ease-out forwards;pointer-events:none}
+
+/* sistem reveal (IntersectionObserver) */
+.ark-page [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .8s cubic-bezier(.16,1,.3,1);transition-delay:var(--ark-d,0s)}
+.ark-page [data-reveal="left"]{transform:translateX(-34px)}
+.ark-page [data-reveal="right"]{transform:translateX(34px)}
+.ark-page [data-reveal="scale"]{transform:scale(.92)}
+.ark-page .ark-in{opacity:1;transform:none}
+
+/* =============================================================
+   ARKADEA WEB — SCROLL PROGRESS (CSS)
+   Bar tipis di paling atas, lebar mengikuti scroll (JS).
+   ============================================================= */
+.ark-page .ark-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:1250;pointer-events:none}
+.ark-page .ark-progress span{display:block;height:100%;width:0;background:var(--ark-grad);box-shadow:0 0 10px rgba(37,99,235,.6)}
+
+/* =============================================================
+   ARKADEA WEB — ANNOUNCEMENT BAR (CSS)
+   Edit teks/tombol di HTML widget #ark-announcement.
+   ============================================================= */
+.ark-page .ark-announcement{position:relative;z-index:5;overflow:hidden;color:#fff;background:linear-gradient(100deg,#1D4ED8,#2563EB 45%,#06B6D4)}
+.ark-page .ark-announcement::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.28) 50%,transparent 60%);transform:translateX(-120%);animation:ark-shine 5.5s ease-in-out infinite}
+.ark-page .ark-ann-inner{max-width:1180px;margin-inline:auto;padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.ark-page .ark-ann-flame{font-size:15px;animation:ark-pulse 1.6s ease-in-out infinite}
+.ark-page .ark-ann-text{font-family:var(--ark-fd);font-weight:600;font-size:13.5px;letter-spacing:.02em}
+.ark-page .ark-ann-text b{color:#BAE6FD}
+.ark-page .ark-ann-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);padding:7px 16px;border-radius:999px;font-family:var(--ark-fd);font-size:12.5px;font-weight:600;transition:background .25s,color .25s,transform .25s}
+.ark-page .ark-ann-btn:hover{background:#fff;color:var(--ark-blue);transform:translateY(-1px)}
+
+/* =============================================================
+   ARKADEA WEB — NAVBAR (CSS)
+   Karakter: tersembunyi di atas, muncul saat scroll (JS),
+   glass blur + pill floating, hamburger animasi di mobile.
+   JANGAN ubah struktur .ark-nav-inner.
+   ============================================================= */
+.ark-page .ark-navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 14px 0;transform:translateY(-115%);transition:transform .5s cubic-bezier(.16,1,.3,1);will-change:transform}
+.ark-page .ark-navbar.ark-nav-show{transform:translateY(0)}
+.ark-page .ark-nav-inner{max-width:1180px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.7);border-radius:18px;box-shadow:0 14px 34px -18px rgba(15,23,42,.25);padding:10px 12px 10px 18px}
+.ark-page .ark-logo{display:flex;align-items:center;gap:10px;font-family:var(--ark-fd);font-weight:800;font-size:17px;letter-spacing:.03em}
+.ark-page .ark-logo-mark{width:38px;height:38px;border-radius:12px;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:15px;box-shadow:0 8px 18px -6px rgba(37,99,235,.6)}
+.ark-page .ark-logo-accent{background:var(--ark-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ark-page .ark-nav-links{display:flex;gap:26px}
+.ark-page .ark-nav-link{position:relative;font-family:var(--ark-fd);font-weight:500;font-size:14.5px;color:var(--ark-muted);padding:6px 2px;transition:color .25s}
+.ark-page .ark-nav-link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2.5px;border-radius:99px;background:var(--ark-grad);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.ark-page .ark-nav-link:hover,.ark-page .ark-nav-link.ark-active{color:var(--ark-blue)}
+.ark-page .ark-nav-link:hover::after,.ark-page .ark-nav-link.ark-active::after{transform:scaleX(1)}
+.ark-page .ark-nav-cta{display:flex;align-items:center;gap:12px}
+.ark-page .ark-burger{display:none;width:42px;height:42px;border-radius:12px;background:var(--ark-soft);flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.ark-page .ark-burger span{width:20px;height:2.4px;border-radius:99px;background:var(--ark-blue);transition:transform .35s,opacity .3s}
+.ark-page .ark-burger.ark-open span:nth-child(1){transform:translateY(7.4px) rotate(45deg)}
+.ark-page .ark-burger.ark-open span:nth-child(2){opacity:0}
+.ark-page .ark-burger.ark-open span:nth-child(3){transform:translateY(-7.4px) rotate(-45deg)}
+.ark-page .ark-mobile-menu{position:absolute;top:calc(100% + 8px);left:14px;right:14px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--ark-line);border-radius:18px;box-shadow:var(--ark-sh-md);padding:14px;display:grid;gap:4px;opacity:0;transform:translateY(-12px) scale(.98);pointer-events:none;transition:opacity .35s,transform .4s cubic-bezier(.16,1,.3,1)}
+.ark-page .ark-mobile-menu.ark-open{opacity:1;transform:none;pointer-events:auto}
+.ark-page .ark-mobile-menu a{font-family:var(--ark-fd);font-weight:600;font-size:15px;color:var(--ark-ink);padding:12px 14px;border-radius:12px;transition:background .25s,color .25s}
+.ark-page .ark-mobile-menu a:hover{background:var(--ark-soft);color:var(--ark-blue)}
+.ark-page .ark-mobile-menu .ark-btn{margin-top:8px}
+
+/* =============================================================
+   ARKADEA WEB — HERO (CSS)
+   Headline + mockup browser + chip melayang + partikel.
+   ============================================================= */
+.ark-page .ark-hero{position:relative;overflow:hidden;padding:clamp(64px,9vh,104px) 0 clamp(56px,7vw,90px);background:
+ radial-gradient(900px 520px at 10% -10%,rgba(37,99,235,.13),transparent 60%),
+ radial-gradient(820px 500px at 96% 12%,rgba(6,182,212,.13),transparent 60%),
+ linear-gradient(180deg,#F8FAFC,#FFFFFF 60%)}
+.ark-page .ark-hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(rgba(37,99,235,.14) 1px,transparent 1.6px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 25%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 0%,#000 25%,transparent 72%)}
+.ark-page .ark-hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,64px);align-items:center}
+.ark-page .ark-hero [data-entrance]{opacity:0;transform:translateY(26px);animation:ark-enter .9s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--e,0s)}
+.ark-page .ark-hero-badge{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--ark-line);border-radius:999px;padding:8px 16px;font-family:var(--ark-fd);font-size:12.5px;font-weight:600;color:var(--ark-muted);box-shadow:var(--ark-sh-sm)}
+.ark-page .ark-hero-badge .ark-dot{width:8px;height:8px;border-radius:50%;background:var(--ark-grad);animation:ark-pulse 1.8s ease-in-out infinite}
+.ark-page .ark-hero-title{font-family:var(--ark-fd);font-weight:800;font-size:clamp(34px,5.6vw,58px);line-height:1.12;letter-spacing:-.02em;margin:20px 0 18px}
+.ark-page .ark-hero-sub{color:var(--ark-muted);font-size:clamp(15px,1.6vw,17.5px);max-width:540px}
+.ark-page .ark-hero-type{display:flex;align-items:center;gap:9px;margin-top:16px;font-family:var(--ark-fd);font-weight:600;font-size:14.5px;color:var(--ark-blue)}
+.ark-page .ark-hero-type i{color:var(--ark-cyan)}
+.ark-page .ark-caret{display:inline-block;width:2px;height:16px;margin-left:2px;background:var(--ark-cyan);animation:ark-blink 1s steps(2) infinite}
+.ark-page .ark-hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.ark-page .ark-hero-proof{display:flex;align-items:center;gap:14px;margin-top:30px}
+.ark-page .ark-avatars{display:flex;flex:none}
+.ark-page .ark-avatars img{width:36px;height:36px;border-radius:50%;border:2.5px solid #fff;object-fit:cover;box-shadow:var(--ark-sh-sm)}
+.ark-page .ark-avatars img+img{margin-left:-10px}
+.ark-page .ark-hero-proof p{font-size:13.5px;color:var(--ark-muted)}
+.ark-page .ark-hero-proof b{color:var(--ark-ink)}
+.ark-page .ark-hero-proof .ark-star{color:#F59E0B}
+/* mockup browser */
+.ark-page .ark-hero-visual{position:relative}
+.ark-page .ark-hero-visual::before{content:"";position:absolute;inset:-8% -6%;background:radial-gradient(closest-side,rgba(96,165,250,.28),transparent 72%);filter:blur(10px);z-index:0}
+.ark-page .ark-browser{position:relative;z-index:1;background:#fff;border:1px solid var(--ark-line);border-radius:20px;overflow:hidden;box-shadow:var(--ark-sh-lg);transition:transform .3s ease-out;will-change:transform}
+.ark-page .ark-browser-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;background:#FBFDFF;border-bottom:1px solid var(--ark-line)}
+.ark-page .ark-browser-bar i.d{width:10px;height:10px;border-radius:50%}
+.ark-page .ark-browser-bar i.d:nth-child(1){background:#FCA5A5}.ark-page .ark-browser-bar i.d:nth-child(2){background:#FCD34D}.ark-page .ark-browser-bar i.d:nth-child(3){background:#86EFAC}
+.ark-page .ark-browser-url{margin-left:10px;display:flex;align-items:center;gap:8px;background:#F1F5F9;border-radius:999px;padding:6px 14px;font-size:12px;color:var(--ark-muted);max-width:240px}
+.ark-page .ark-browser-url i{color:var(--ark-cyan);font-size:10px}
+.ark-page .ark-browser-ui{padding:18px;display:grid;gap:11px}
+.ark-page .ark-ui-line{height:10px;border-radius:6px;background:linear-gradient(90deg,#DCE8FB,#D8F4FB)}
+.ark-page .ark-ui-line.w70{width:70%}.ark-page .ark-ui-line.w45{width:45%}
+.ark-page .ark-ui-cards{display:flex;gap:10px;margin-top:4px}
+.ark-page .ark-ui-card{flex:1;height:56px;border-radius:12px;background:#F8FAFC;border:1px solid var(--ark-line);position:relative;overflow:hidden}
+.ark-page .ark-ui-card::before{content:"";position:absolute;top:12px;left:12px;width:20px;height:20px;border-radius:7px;background:var(--ark-grad)}
+.ark-page .ark-ui-card::after{content:"";position:absolute;bottom:12px;left:12px;right:12px;height:7px;border-radius:5px;background:#E2E8F0}
+.ark-page .ark-ui-btn{width:124px;height:34px;border-radius:10px;background:var(--ark-grad)}
+.ark-page .ark-float-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(37,99,235,.16);border-radius:16px;padding:11px 15px;box-shadow:var(--ark-sh-md);font-family:var(--ark-fd);font-size:13px;font-weight:600;animation:ark-float 6.5s ease-in-out infinite}
+.ark-page .ark-float-chip i{width:34px;height:34px;flex:none;border-radius:10px;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:14px}
+.ark-page .ark-chip-1{top:-20px;left:-18px}
+.ark-page .ark-chip-2{top:44%;right:-24px;animation-delay:1.3s}
+.ark-page .ark-chip-3{bottom:-22px;left:9%;animation-delay:2.2s}
+.ark-page .ark-particle{position:absolute;z-index:2;width:8px;height:8px;border-radius:50%;background:var(--ark-grad);opacity:.35;animation:ark-float 7s ease-in-out infinite}
+
+/* =============================================================
+   ARKADEA WEB — TRUST / STATISTIK (CSS)
+   Counter angka (JS) + chip kualitatif + marquee layanan.
+   ============================================================= */
+.ark-page .ark-trust{padding:clamp(44px,6vw,64px) 0 0}
+.ark-page .ark-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ark-page .ark-stat{position:relative;overflow:hidden;background:#fff;border:1px solid var(--ark-line);border-radius:var(--ark-r-lg);padding:26px 18px;text-align:center;box-shadow:var(--ark-sh-sm);transition:transform .3s,box-shadow .3s}
+.ark-page .ark-stat:hover{transform:translateY(-5px);box-shadow:var(--ark-sh-md)}
+.ark-page .ark-stat::before{content:"";position:absolute;top:0;left:22%;right:22%;height:3px;border-radius:0 0 8px 8px;background:var(--ark-grad)}
+.ark-page .ark-stat-num{display:block;font-family:var(--ark-fd);font-weight:800;font-size:clamp(28px,3.2vw,38px);line-height:1.15;background:var(--ark-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ark-page .ark-stat-label{color:var(--ark-muted);font-size:13.5px;font-weight:500}
+.ark-page .ark-trust-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
+.ark-page .ark-trust-chip{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;background:#fff;border:1px solid var(--ark-line);box-shadow:var(--ark-sh-sm);font-family:var(--ark-fd);font-weight:600;font-size:13.5px;transition:transform .25s,border-color .25s}
+.ark-page .ark-trust-chip:hover{transform:translateY(-3px);border-color:rgba(6,182,212,.5)}
+.ark-page .ark-trust-chip i{color:var(--ark-cyan)}
+.ark-page .ark-marquee{margin-top:clamp(40px,6vw,60px);border-block:1px solid var(--ark-line);background:linear-gradient(90deg,#F8FAFC,#EFF6FF 50%,#F8FAFC);overflow:hidden;padding:15px 0}
+.ark-page .ark-marquee-track{display:flex;width:max-content;animation:ark-marquee 28s linear infinite}
+.ark-page .ark-marquee:hover .ark-marquee-track{animation-play-state:paused}
+.ark-page .ark-marquee-track span{display:flex;align-items:center;gap:26px;padding-right:26px;font-family:var(--ark-fd);font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#94A3B8;white-space:nowrap}
+.ark-page .ark-marquee-track span::after{content:"✦";color:var(--ark-cyan);font-size:12px}
+
+/* =============================================================
+   ARKADEA WEB — PROBLEM (CSS)
+   ============================================================= */
+.ark-page .ark-problem{background:var(--ark-bg)}
+.ark-page .ark-grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ark-page .ark-pcard{background:#fff;border:1px solid var(--ark-line);border-radius:var(--ark-r-lg);padding:28px;transition:transform .35s,box-shadow .35s,border-color .35s}
+.ark-page .ark-pcard:hover{transform:translateY(-6px);box-shadow:var(--ark-sh-md);border-color:rgba(37,99,235,.3)}
+.ark-page .ark-pcard-ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:20px;color:var(--ark-blue);background:var(--ark-grad-soft);border:1px solid rgba(37,99,235,.12);margin-bottom:18px;transition:transform .35s}
+.ark-page .ark-pcard:hover .ark-pcard-ico{transform:rotate(-6deg) scale(1.06)}
+.ark-page .ark-pcard h3{font-family:var(--ark-fd);font-size:17px;font-weight:700;margin-bottom:8px}
+.ark-page .ark-pcard p{color:var(--ark-muted);font-size:14px}
+
+/* =============================================================
+   ARKADEA WEB — SOLUTION (CSS)
+   ============================================================= */
+.ark-page .ark-solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,70px);align-items:center}
+.ark-page .ark-check-list{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:26px 0 30px}
+.ark-page .ark-check{display:flex;align-items:flex-start;gap:12px;background:#fff;border:1px solid var(--ark-line);border-radius:14px;padding:14px 15px;font-family:var(--ark-fd);font-weight:600;font-size:13.5px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.ark-page .ark-check:hover{transform:translateY(-3px);border-color:rgba(37,99,235,.35);box-shadow:var(--ark-sh-sm)}
+.ark-page .ark-check i{flex:none;width:26px;height:26px;border-radius:8px;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:11px}
+.ark-page .ark-sol-visual{position:relative}
+.ark-page .ark-sol-visual::before{content:"";position:absolute;inset:-6% -4%;background:radial-gradient(closest-side,rgba(6,182,212,.2),transparent 72%);filter:blur(8px)}
+.ark-page .ark-sol-main{position:relative;border-radius:var(--ark-r-xl);overflow:hidden;border:6px solid #fff;box-shadow:var(--ark-sh-lg)}
+.ark-page .ark-sol-main img{width:100%;height:100%;object-fit:cover}
+.ark-page .ark-sol-card{position:absolute;z-index:2;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--ark-line);border-radius:16px;padding:13px 17px;box-shadow:var(--ark-sh-md);font-family:var(--ark-fd);font-size:13px;font-weight:600;animation:ark-float 6s ease-in-out infinite}
+.ark-page .ark-sol-card i{width:32px;height:32px;flex:none;border-radius:9px;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:13px}
+.ark-page .ark-sol-card small{display:block;font-weight:500;color:var(--ark-muted);font-size:11.5px}
+.ark-page .ark-sol-card.a{top:26px;left:-24px}
+.ark-page .ark-sol-card.b{bottom:34px;right:-18px;animation-delay:1.6s}
+
+/* =============================================================
+   ARKADEA WEB — CUSTOMER EXPERIENCE (CSS) — SLIDER PARALLAX
+   Track digeser oleh JS (autoplay, drag, dots, prev/next).
+   Ornamen .ark-exp-orb & avatar bergerak parallax saat scroll.
+   ============================================================= */
+.ark-page .ark-experience{background:linear-gradient(180deg,#fff,#EFF6FF 160%);overflow:hidden;z-index:0}
+.ark-page .ark-experience .ark-container{position:relative;z-index:1}
+.ark-page .ark-exp-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;will-change:transform}
+.ark-page .ark-exp-orb.ark-orb-1{width:300px;height:300px;top:4%;left:-130px;background:radial-gradient(closest-side,rgba(96,165,250,.3),transparent 72%)}
+.ark-page .ark-exp-orb.ark-orb-2{width:250px;height:250px;bottom:2%;right:-100px;background:radial-gradient(closest-side,rgba(6,182,212,.26),transparent 72%)}
+.ark-page .ark-exp-slider{position:relative}
+.ark-page .ark-exp-viewport{overflow:hidden;padding:8px 4px;margin:-8px -4px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.ark-page .ark-exp-viewport.ark-grabbing{cursor:grabbing}
+.ark-page .ark-exp-track{display:flex;gap:22px;transition:transform .7s cubic-bezier(.16,1,.3,1);will-change:transform}
+.ark-page .ark-exp-track.ark-dragging{transition:none}
+.ark-page .ark-exp-slide{flex:0 0 calc((100% - 44px)/3);min-width:0;display:flex}
+.ark-page .ark-exp-card{position:relative;display:flex;flex-direction:column;width:100%;background:#fff;border:1px solid var(--ark-line);border-radius:var(--ark-r-lg);padding:26px;transition:transform .35s,box-shadow .35s,border-color .35s}
+.ark-page .ark-exp-card:hover{transform:translateY(-6px);box-shadow:var(--ark-sh-md);border-color:rgba(37,99,235,.3)}
+.ark-page .ark-exp-head{display:flex;align-items:center;gap:13px;margin-bottom:14px}
+.ark-page .ark-exp-avatar{flex:none;width:50px;height:50px;border-radius:50%;padding:2.5px;background:var(--ark-grad);will-change:transform}
+.ark-page .ark-exp-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff}
+.ark-page .ark-exp-name{font-family:var(--ark-fd);font-weight:700;font-size:15px}
+.ark-page .ark-exp-cat{display:inline-block;margin-top:3px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ark-blue);background:var(--ark-soft);padding:3px 10px;border-radius:999px}
+.ark-page .ark-exp-card blockquote{color:#334155;font-size:14.5px;margin-bottom:14px;flex:1}
+.ark-page .ark-stars{display:flex;gap:3px;color:#F59E0B;font-size:12.5px}
+/* navigasi slider */
+.ark-page .ark-exp-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:30px}
+.ark-page .ark-exp-arrow{width:48px;height:48px;border-radius:50%;background:#fff;border:1.5px solid var(--ark-line);color:var(--ark-blue);display:grid;place-items:center;font-size:16px;box-shadow:var(--ark-sh-sm);transition:all .3s}
+.ark-page .ark-exp-arrow:hover{background:var(--ark-grad);border-color:transparent;color:#fff;transform:translateY(-2px);box-shadow:var(--ark-sh-md)}
+.ark-page .ark-exp-dots{display:flex;align-items:center;gap:8px}
+.ark-page .ark-exp-dot{width:9px;height:9px;border-radius:99px;background:#CBD5E1;padding:0;transition:width .35s,background .35s}
+.ark-page .ark-exp-dot:hover{background:var(--ark-sky)}
+.ark-page .ark-exp-dot.ark-active{width:26px;background:var(--ark-grad)}
+
+/* =============================================================
+   ARKADEA WEB — SERVICES (CSS)
+   8 layanan, ikon melayang halus + 3D tilt (JS).
+   ============================================================= */
+.ark-page .ark-serv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.ark-page .ark-serv-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--ark-line);border-radius:var(--ark-r-lg);padding:28px 24px;transition:transform .3s ease-out,box-shadow .35s,border-color .35s;transform-style:preserve-3d;will-change:transform}
+.ark-page .ark-serv-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--ark-grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.ark-page .ark-serv-card:hover::before{transform:scaleX(1)}
+.ark-page .ark-serv-card:hover{box-shadow:var(--ark-sh-md);border-color:rgba(37,99,235,.3)}
+.ark-page .ark-serv-ico{width:56px;height:56px;border-radius:16px;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:22px;box-shadow:0 12px 24px -10px rgba(37,99,235,.6);margin-bottom:18px;animation:ark-float-soft 6s ease-in-out infinite;animation-delay:var(--fd,0s)}
+.ark-page .ark-serv-card h3{font-family:var(--ark-fd);font-size:16.5px;font-weight:700;margin-bottom:8px}
+.ark-page .ark-serv-card p{color:var(--ark-muted);font-size:13.5px}
+
+/* =============================================================
+   ARKADEA WEB — FEATURES (CSS)
+   ============================================================= */
+.ark-page .ark-features{background:var(--ark-bg)}
+.ark-page .ark-feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ark-page .ark-feat-card{position:relative;display:flex;align-items:flex-start;gap:18px;background:#fff;border:1px solid var(--ark-line);border-radius:18px;padding:22px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.ark-page .ark-feat-card:hover{transform:translateY(-4px);border-color:rgba(37,99,235,.35);box-shadow:var(--ark-sh-md)}
+.ark-page .ark-feat-ico{flex:none;width:48px;height:48px;border-radius:14px;background:var(--ark-soft);color:var(--ark-blue);display:grid;place-items:center;font-size:19px;transition:transform .35s,background .35s,color .35s,box-shadow .35s}
+.ark-page .ark-feat-card:hover .ark-feat-ico{background:var(--ark-grad);color:#fff;transform:rotate(-6deg) scale(1.07);box-shadow:0 12px 24px -10px rgba(37,99,235,.6)}
+.ark-page .ark-feat-card h3{font-family:var(--ark-fd);font-size:15.5px;font-weight:700;margin-bottom:4px}
+.ark-page .ark-feat-card p{color:var(--ark-muted);font-size:13.5px}
+.ark-page .ark-feat-num{position:absolute;top:16px;right:20px;font-family:var(--ark-fd);font-weight:800;font-size:14px;color:#E2E8F0}
+
+/* =============================================================
+   ARKADEA WEB — PORTFOLIO (CSS)
+   Filter kategori (JS) + overlay hover + zoom halus.
+   ============================================================= */
+.ark-page .ark-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:36px}
+.ark-page .ark-filter-btn{padding:9px 20px;border-radius:999px;border:1.5px solid var(--ark-line);background:#fff;font-family:var(--ark-fd);font-weight:600;font-size:13.5px;color:var(--ark-muted);transition:all .3s}
+.ark-page .ark-filter-btn:hover{border-color:var(--ark-sky);color:var(--ark-blue)}
+.ark-page .ark-filter-btn.ark-active{background:var(--ark-grad);border-color:transparent;color:#fff;box-shadow:0 10px 22px -10px rgba(37,99,235,.6)}
+.ark-page .ark-port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ark-page .ark-port-card{position:relative;overflow:hidden;background:#fff;border:1px solid var(--ark-line);border-radius:var(--ark-r-lg);box-shadow:var(--ark-sh-sm);transition:transform .4s,box-shadow .4s}
+.ark-page .ark-port-card:hover{transform:translateY(-7px);box-shadow:var(--ark-sh-lg)}
+.ark-page .ark-port-media{position:relative;aspect-ratio:4/3;overflow:hidden}
+.ark-page .ark-port-media img{width:100%;height:100%;object-fit:cover;transition:transform 5s ease}
+.ark-page .ark-port-card:hover .ark-port-media img{transform:scale(1.12)} /* Ken Burns halus */
+.ark-page .ark-port-cat{position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ark-blue);font-family:var(--ark-fd);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 13px;border-radius:999px}
+.ark-page .ark-port-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:22px;background:linear-gradient(180deg,rgba(15,23,42,0) 32%,rgba(15,23,42,.82));color:#fff;opacity:0;transition:opacity .4s}
+.ark-page .ark-port-card:hover .ark-port-overlay{opacity:1}
+.ark-page .ark-port-overlay h3{font-family:var(--ark-fd);font-size:18px;font-weight:700;transform:translateY(10px);transition:transform .45s}
+.ark-page .ark-port-overlay p{font-size:13px;color:rgba(255,255,255,.85);transform:translateY(10px);transition:transform .5s}
+.ark-page .ark-port-card:hover .ark-port-overlay h3,.ark-page .ark-port-card:hover .ark-port-overlay p{transform:none}
+.ark-page .ark-gone{display:none}
+.ark-page .ark-pop{animation:ark-pop .5s cubic-bezier(.16,1,.3,1)}
+
+/* =============================================================
+   ARKADEA WEB — TIMELINE PROSES (CSS)
+   Garis tengah terisi saat scroll (JS), langkah aktif menyala.
+   ============================================================= */
+.ark-page .ark-process{background:var(--ark-bg);overflow:hidden}
+.ark-page .ark-timeline{position:relative;max-width:920px;margin-inline:auto;padding:14px 0}
+.ark-page .ark-tl-line{position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);background:#E2E8F0;border-radius:99px}
+.ark-page .ark-tl-fill{position:absolute;top:0;left:0;width:100%;height:0;background:var(--ark-grad);border-radius:99px;box-shadow:0 0 18px rgba(37,99,235,.55)}
+.ark-page .ark-tl-steps{position:relative}
+.ark-page .ark-step{position:relative;width:50%;display:flex;justify-content:flex-end;padding-right:60px;margin-bottom:36px}
+.ark-page .ark-step:nth-child(even){margin-left:50%;justify-content:flex-start;padding-right:0;padding-left:60px}
+.ark-page .ark-step-bubble{position:absolute;top:0;width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid #DBEAFE;display:grid;place-items:center;font-family:var(--ark-fd);font-weight:800;font-size:15px;color:var(--ark-blue);box-shadow:var(--ark-sh-sm);z-index:2;right:-27px;transition:all .45s cubic-bezier(.16,1,.3,1)}
+.ark-page .ark-step:nth-child(even) .ark-step-bubble{right:auto;left:-27px}
+.ark-page .ark-step.ark-active .ark-step-bubble{background:var(--ark-grad);border-color:transparent;color:#fff;transform:scale(1.08);box-shadow:0 14px 28px -10px rgba(37,99,235,.65)}
+.ark-page .ark-step-card{display:flex;align-items:flex-start;gap:15px;background:#fff;border:1px solid var(--ark-line);border-radius:18px;padding:22px 24px;max-width:390px;box-shadow:var(--ark-sh-sm);transition:transform .3s,box-shadow .3s,border-color .3s}
+.ark-page .ark-step-card:hover{transform:translateY(-4px);box-shadow:var(--ark-sh-md);border-color:rgba(37,99,235,.3)}
+.ark-page .ark-step-ico{flex:none;width:44px;height:44px;border-radius:12px;background:var(--ark-soft);color:var(--ark-blue);display:grid;place-items:center;font-size:17px;animation:ark-float-soft 5s ease-in-out infinite}
+.ark-page .ark-step-card h3{font-family:var(--ark-fd);font-size:16px;font-weight:700;margin-bottom:4px}
+.ark-page .ark-step-card p{color:var(--ark-muted);font-size:13.5px}
+
+/* =============================================================
+   ARKADEA WEB — PRICING + COUNTDOWN (CSS)
+   Harga diisi otomatis dari ARKADEA_CONFIG (JS).
+   ============================================================= */
+.ark-page .ark-pricing{overflow:hidden;background:linear-gradient(180deg,#EFF6FF 0%,#fff 42%)}
+.ark-page .ark-pricing::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:720px;height:340px;background:radial-gradient(closest-side,rgba(37,99,235,.16),transparent);pointer-events:none}
+.ark-page .ark-promo-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(37,99,235,.22);border-radius:20px;padding:20px 26px;box-shadow:var(--ark-sh-md);margin-bottom:48px}
+.ark-page .ark-promo-left{display:flex;align-items:center;gap:16px}
+.ark-page .ark-promo-flame{font-size:26px;animation:ark-pulse 1.6s ease-in-out infinite}
+.ark-page .ark-promo-left strong{font-family:var(--ark-fd);font-size:16.5px;display:block}
+.ark-page .ark-promo-left span{color:var(--ark-muted);font-size:13.5px}
+.ark-page .ark-countdown{display:flex;gap:10px}
+.ark-page .ark-cd-box{min-width:66px;text-align:center;background:linear-gradient(160deg,#1D4ED8,#06B6D4);color:#fff;border-radius:13px;padding:10px 6px;box-shadow:0 12px 24px -10px rgba(37,99,235,.55)}
+.ark-page .ark-cd-box span{display:block;font-family:var(--ark-fd);font-weight:800;font-size:23px;line-height:1.1;font-variant-numeric:tabular-nums}
+.ark-page .ark-cd-box small{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.ark-page .ark-cd-end{font-family:var(--ark-fd);font-weight:700;color:var(--ark-blue)}
+.ark-page .ark-price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.ark-page .ark-price-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--ark-line);border-radius:24px;padding:36px 28px 30px;transition:transform .3s ease-out,box-shadow .35s,border-color .35s;transform-style:preserve-3d;will-change:transform}
+.ark-page .ark-price-card:hover{border-color:rgba(37,99,235,.45);box-shadow:0 26px 60px -22px rgba(37,99,235,.42)}
+.ark-page .ark-price-card.ark-popular{margin-top:-12px;border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--ark-grad) border-box;box-shadow:var(--ark-sh-lg)}
+.ark-page .ark-price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--ark-grad);color:#fff;font-family:var(--ark-fd);font-weight:700;font-size:10.5px;letter-spacing:.12em;padding:7px 18px;border-radius:999px;box-shadow:0 10px 20px -8px rgba(37,99,235,.6);white-space:nowrap}
+.ark-page .ark-price-name{font-family:var(--ark-fd);font-weight:700;font-size:20px}
+.ark-page .ark-price-desc{color:var(--ark-muted);font-size:13.5px;margin:6px 0 20px}
+.ark-page .ark-price-normal{color:#94A3B8;text-decoration:line-through;font-size:14px;font-weight:500}
+.ark-page .ark-price-main{display:flex;align-items:baseline;gap:8px;margin-top:2px}
+.ark-page .ark-price-promo{font-family:var(--ark-fd);font-weight:800;font-size:clamp(29px,3vw,35px);background:var(--ark-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ark-page .ark-price-per{color:var(--ark-muted);font-size:13px}
+.ark-page .ark-price-save{display:inline-flex;margin-top:10px;background:var(--ark-soft);color:var(--ark-blue);font-size:12px;font-weight:700;padding:5px 13px;border-radius:999px;width:fit-content}
+.ark-page .ark-price-features{flex:1;display:grid;gap:11px;align-content:start;margin:22px 0 26px;padding-top:22px;border-top:1px dashed var(--ark-line)}
+.ark-page .ark-price-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#334155}
+.ark-page .ark-price-features i{color:var(--ark-cyan);margin-top:4px;font-size:13px}
+
+/* =============================================================
+   ARKADEA WEB — PROMO / KATA-KATA PROMOSI (CSS)
+   [REV-2] Section voucher kini berisi kata-kata promosi;
+   desain panel dashed dipertahankan. Voucher tetap bisa dipakai
+   di form checkout (logika modal tidak berubah).
+   ============================================================= */
+.ark-page .ark-voucher-panel{background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(6,182,212,.09));border:1.5px dashed rgba(37,99,235,.35);border-radius:26px;padding:clamp(30px,5vw,52px)}
+.ark-page .ark-promo-copy{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,48px);align-items:center;margin-top:34px;background:#fff;border:1px solid rgba(37,99,235,.16);border-radius:20px;padding:clamp(24px,4vw,36px);box-shadow:var(--ark-sh-sm)}
+.ark-page .ark-promo-stat{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding-right:clamp(18px,3vw,40px);border-right:1.5px dashed rgba(37,99,235,.3)}
+.ark-page .ark-promo-big{font-family:var(--ark-fd);font-weight:800;font-size:clamp(54px,7vw,78px);line-height:1;background:var(--ark-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ark-page .ark-promo-big span{font-size:.55em}
+.ark-page .ark-promo-stat p{max-width:230px;font-size:13.5px;color:var(--ark-muted)}
+.ark-page .ark-promo-stat p b{color:var(--ark-blue)}
+.ark-page .ark-promo-points{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.ark-page .ark-promo-points li{display:flex;align-items:flex-start;gap:10px;font-family:var(--ark-fd);font-weight:600;font-size:14px}
+.ark-page .ark-promo-points i{color:var(--ark-cyan);margin-top:4px;font-size:13px}
+.ark-page .ark-promo-cta{display:flex;justify-content:center;margin-top:28px}
+.ark-page .ark-voucher-note{margin-top:24px;text-align:center;font-size:13px;color:var(--ark-muted)}
+.ark-page .ark-voucher-note i{color:var(--ark-cyan);margin-right:6px}
+
+/* =============================================================
+   ARKADEA WEB — TESTIMONIALS (CSS)
+   Widget ringkas: rating agregat + kutipan pendek.
+   ============================================================= */
+.ark-page .ark-testimonials{background:var(--ark-bg)}
+.ark-page .ark-testi-grid{display:grid;grid-template-columns:1fr 1.2fr 1.2fr 1.2fr;gap:20px}
+.ark-page .ark-testi-rating{background:var(--ark-grad);color:#fff;border-radius:22px;padding:30px 26px;display:flex;flex-direction:column;justify-content:center;gap:8px;box-shadow:var(--ark-sh-md)}
+.ark-page .ark-testi-big{font-family:var(--ark-fd);font-weight:800;font-size:54px;line-height:1}
+.ark-page .ark-testi-rating .ark-stars{color:#FDE68A;font-size:14px}
+.ark-page .ark-testi-rating p{font-size:13px;opacity:.9}
+.ark-page .ark-quote-card{background:#fff;border:1px solid var(--ark-line);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.ark-page .ark-quote-card:hover{transform:translateY(-5px);box-shadow:var(--ark-sh-md);border-color:rgba(37,99,235,.3)}
+.ark-page .ark-quote-card i{color:var(--ark-sky);font-size:20px}
+.ark-page .ark-quote-card blockquote{font-size:14px;color:#334155;flex:1}
+.ark-page .ark-quote-card footer{font-family:var(--ark-fd);font-size:13px;font-weight:700}
+.ark-page .ark-quote-card footer span{display:block;font-weight:500;color:var(--ark-muted);font-size:12px}
+
+/* =============================================================
+   ARKADEA WEB — FAQ (CSS) — accordion animasi grid-rows
+   ============================================================= */
+.ark-page .ark-faq-list{max-width:780px;margin-inline:auto;display:grid;gap:14px}
+.ark-page .ark-faq-item{background:var(--ark-bg);border:1px solid var(--ark-line);border-radius:16px;overflow:hidden;transition:border-color .3s,box-shadow .3s,background .3s}
+.ark-page .ark-faq-item.ark-open{background:#fff;border-color:rgba(37,99,235,.35);box-shadow:var(--ark-sh-sm)}
+.ark-page .ark-faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 22px;text-align:left;font-family:var(--ark-fd);font-weight:600;font-size:15.5px}
+.ark-page .ark-faq-q i{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ark-soft);color:var(--ark-blue);display:grid;place-items:center;font-size:13px;transition:transform .4s,background .3s,color .3s}
+.ark-page .ark-faq-item.ark-open .ark-faq-q i{transform:rotate(45deg);background:var(--ark-grad);color:#fff}
+.ark-page .ark-faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.16,1,.3,1)}
+.ark-page .ark-faq-a>div{overflow:hidden}
+.ark-page .ark-faq-a p{padding:0 22px 20px;color:var(--ark-muted);font-size:14.5px}
+.ark-page .ark-faq-item.ark-open .ark-faq-a{grid-template-rows:1fr}
+
+/* =============================================================
+   ARKADEA WEB — FINAL CTA (CSS)
+   ============================================================= */
+.ark-page .ark-cta-panel{position:relative;overflow:hidden;text-align:center;color:#fff;border-radius:30px;padding:clamp(48px,7vw,84px) clamp(24px,6vw,70px);background:linear-gradient(130deg,#1D4ED8,#2563EB 45%,#0891B2);box-shadow:var(--ark-sh-lg)}
+.ark-page .ark-cta-panel::before,.ark-page .ark-cta-panel::after{content:"";position:absolute;border-radius:50%;border:40px solid rgba(255,255,255,.07);pointer-events:none}
+.ark-page .ark-cta-panel::before{width:340px;height:340px;top:-140px;left:-110px}
+.ark-page .ark-cta-panel::after{width:280px;height:280px;bottom:-120px;right:-90px;border-width:30px}
+.ark-page .ark-cta-panel h2{position:relative;font-family:var(--ark-fd);font-weight:800;font-size:clamp(26px,4.2vw,42px);line-height:1.22;max-width:760px;margin-inline:auto}
+.ark-page .ark-cta-panel h2 em{font-style:normal;color:#A5F3FC}
+.ark-page .ark-cta-panel>p{position:relative;max-width:620px;margin:18px auto 0;color:rgba(226,240,255,.92);font-size:15.5px}
+.ark-page .ark-cta-actions{position:relative;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:32px}
+.ark-page .ark-cta-note{position:relative;display:block;margin-top:20px;font-size:12.5px;color:rgba(226,240,255,.8)}
+
+/* =============================================================
+   ARKADEA WEB — FOOTER (CSS)
+   ============================================================= */
+.ark-page .ark-footer{position:relative;overflow:hidden;background:#0F172A;color:#CBD5E1;padding-top:64px}
+.ark-page .ark-footer::before{content:"";position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:700px;height:320px;background:radial-gradient(closest-side,rgba(37,99,235,.3),transparent);pointer-events:none}
+.ark-page .ark-footer-grid{position:relative;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:44px;padding-bottom:46px}
+.ark-page .ark-footer .ark-logo{color:#fff;margin-bottom:16px}
+.ark-page .ark-footer-desc{color:#94A3B8;font-size:14.5px;max-width:320px}
+.ark-page .ark-footer-domain{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.3);color:#93C5FD;font-family:var(--ark-fd);font-size:12.5px;font-weight:600;padding:7px 15px;border-radius:999px}
+.ark-page .ark-footer h4{font-family:var(--ark-fd);color:#fff;font-size:15px;margin-bottom:16px}
+.ark-page .ark-footer-col ul{display:grid;gap:11px}
+.ark-page .ark-footer-col a{display:inline-flex;align-items:center;gap:10px;color:#94A3B8;font-size:14px;transition:color .25s,transform .25s}
+.ark-page .ark-footer-col a:hover{color:#7DD3FC;transform:translateX(4px)}
+.ark-page .ark-footer-col a i{color:#38BDF8;width:18px;text-align:center}
+.ark-page .ark-footer-bottom{position:relative;border-top:1px solid rgba(255,255,255,.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;color:#64748B}
+.ark-page .ark-footer-credit a{color:var(--ark-sky);font-weight:600}
+.ark-page .ark-footer-credit a:hover{text-decoration:underline}
+
+/* =============================================================
+   ARKADEA WEB — CHECKOUT MODAL (CSS)
+   ============================================================= */
+.ark-page .ark-modal{position:fixed;inset:0;z-index:1400;display:grid;place-items:center;padding:18px;visibility:hidden;opacity:0;transition:opacity .35s,visibility .35s}
+.ark-page .ark-modal.ark-modal-open{visibility:visible;opacity:1}
+.ark-page .ark-modal-overlay{position:absolute;inset:0;background:rgba(15,23,42,.55);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.ark-page .ark-modal-panel{position:relative;width:min(540px,100%);max-height:min(90vh,780px);overflow:auto;background:#fff;border-radius:24px;padding:30px;box-shadow:0 42px 90px -30px rgba(15,23,42,.55);transform:translateY(28px) scale(.96);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.ark-page .ark-modal.ark-modal-open .ark-modal-panel{transform:none}
+.ark-page .ark-modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:var(--ark-bg);color:var(--ark-muted);display:grid;place-items:center;transition:background .25s,color .25s,transform .25s}
+.ark-page .ark-modal-close:hover{background:#FEE2E2;color:#DC2626;transform:rotate(90deg)}
+.ark-page .ark-modal-head{display:flex;align-items:center;gap:15px;margin-bottom:24px;padding-right:36px}
+.ark-page .ark-modal-ico{flex:none;width:50px;height:50px;border-radius:15px;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:19px;box-shadow:0 12px 24px -10px rgba(37,99,235,.55)}
+.ark-page .ark-modal-head h3{font-family:var(--ark-fd);font-weight:700;font-size:18.5px}
+.ark-page .ark-modal-head p{color:var(--ark-muted);font-size:13px}
+.ark-page .ark-field{margin-bottom:16px}
+.ark-page .ark-field label{display:block;font-family:var(--ark-fd);font-weight:600;font-size:12.5px;color:#334155;margin-bottom:7px}
+.ark-page .ark-field input,.ark-page .ark-field select{width:100%;padding:12px 14px;border:1.5px solid var(--ark-line);border-radius:12px;background:var(--ark-bg);font-size:14.5px;color:var(--ark-ink);transition:border-color .25s,background .25s,box-shadow .25s}
+.ark-page .ark-field input:focus,.ark-page .ark-field select:focus{outline:none;border-color:var(--ark-blue);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.14)}
+.ark-page .ark-select{position:relative}
+.ark-page .ark-select select{appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer}
+.ark-page .ark-select i{position:absolute;right:15px;top:50%;transform:translateY(-50%);color:var(--ark-muted);font-size:12px;pointer-events:none}
+.ark-page .ark-field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ark-page .ark-voucher-row{display:flex;gap:10px}
+.ark-page .ark-voucher-row input{flex:1;text-transform:uppercase}
+.ark-page .ark-voucher-status{min-height:18px;margin-top:7px;font-size:12.5px;font-weight:600}
+.ark-page .ark-vs-ok{color:#0284C7}.ark-page .ark-vs-err{color:#DC2626}
+.ark-page .ark-input-err{border-color:#EF4444!important;background:#FEF2F2!important;animation:ark-shake .4s}
+.ark-page .ark-form-error{display:none;margin:-6px 0 14px;color:#DC2626;font-size:12.5px;font-weight:600}
+.ark-page .ark-form-error.ark-show{display:block}
+.ark-page .ark-summary{background:var(--ark-bg);border:1px solid var(--ark-line);border-radius:16px;padding:18px;margin:20px 0;display:grid;gap:10px}
+.ark-page .ark-summary-row{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--ark-muted)}
+.ark-page .ark-summary-row b{color:var(--ark-ink);font-weight:600}
+.ark-page .ark-summary-row .ark-strike{text-decoration:line-through;color:#94A3B8}
+.ark-page .ark-summary-total{border-top:1.5px dashed var(--ark-line);padding-top:12px;font-family:var(--ark-fd);font-weight:700;font-size:15px;color:var(--ark-ink)}
+.ark-page .ark-summary-total b{font-size:19px;background:var(--ark-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ark-page .ark-modal-note{margin-top:14px;text-align:center;font-size:12px;color:var(--ark-muted)}
+.ark-page .ark-modal-note i{color:var(--ark-cyan)}
+.ark-page .ark-modal-success{text-align:center;padding:34px 10px}
+.ark-page .ark-modal-success i{width:66px;height:66px;border-radius:50%;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:28px;margin:0 auto 18px;box-shadow:0 16px 34px -12px rgba(37,99,235,.6)}
+.ark-page .ark-modal-success h4{font-family:var(--ark-fd);font-size:19px;margin-bottom:8px}
+.ark-page .ark-modal-success p{color:var(--ark-muted);font-size:14px}
+
+/* =============================================================
+   ARKADEA WEB — TOAST, BACK TO TOP, BURST (CSS)
+   ============================================================= */
+.ark-page .ark-toast{position:fixed;left:20px;bottom:20px;z-index:1300;display:flex;align-items:center;gap:13px;max-width:min(430px,calc(100vw - 40px));background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(37,99,235,.2);border-radius:18px;padding:14px 17px;box-shadow:0 22px 48px -18px rgba(15,23,42,.4);opacity:0;transform:translateY(24px) translateX(-14px);pointer-events:none;transition:transform .55s cubic-bezier(.16,1,.3,1),opacity .45s}
+.ark-page .ark-toast.ark-toast-show{opacity:1;transform:none;pointer-events:auto}
+.ark-page .ark-toast-ico{flex:none;width:42px;height:42px;border-radius:12px;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:17px}
+.ark-page .ark-toast-msg{flex:1;font-size:13.5px;color:#334155;line-height:1.45}
+.ark-page .ark-toast-msg .ark-hl{color:var(--ark-sky-2);font-weight:700} /* nama & paket: biru sky + bold */
+.ark-page .ark-toast-tag{flex:none;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;border:1px solid var(--ark-line);padding:3px 8px;border-radius:999px}
+.ark-page .ark-totop{position:fixed;right:20px;bottom:20px;z-index:1200;width:48px;height:48px;border-radius:14px;background:var(--ark-grad);color:#fff;display:grid;place-items:center;font-size:17px;box-shadow:0 14px 30px -12px rgba(37,99,235,.65);opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .35s,transform .35s,box-shadow .3s}
+.ark-page .ark-totop.ark-show{opacity:1;transform:none;pointer-events:auto}
+.ark-page .ark-totop:hover{transform:translateY(-3px);box-shadow:0 20px 38px -12px rgba(37,99,235,.7)}
+.ark-page .ark-burst-part{position:fixed;width:7px;height:7px;border-radius:50%;pointer-events:none;z-index:1500;animation:ark-burst .7s cubic-bezier(.16,1,.3,1) forwards}
+
+/* ---------- keyframes ---------- */
+@keyframes ark-enter{to{opacity:1;transform:none}}
+@keyframes ark-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+@keyframes ark-float-soft{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes ark-shine{0%{transform:translateX(-120%)}55%,100%{transform:translateX(120%)}}
+@keyframes ark-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes ark-blink{50%{opacity:0}}
+@keyframes ark-marquee{to{transform:translateX(-50%)}}
+@keyframes ark-ripple{to{transform:scale(1);opacity:0}}
+@keyframes ark-burst{from{transform:translate(0,0) scale(1);opacity:1}to{transform:translate(var(--bx),var(--by)) scale(.15);opacity:0}}
+@keyframes ark-pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes ark-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .ark-page .ark-hero-grid{grid-template-columns:1fr}
+  .ark-page .ark-hero-visual{max-width:600px;margin:26px auto 0}
+  .ark-page .ark-chip-1{left:-6px}.ark-page .ark-chip-2{right:-8px}.ark-page .ark-chip-3{left:4%}
+  .ark-page .ark-serv-grid{grid-template-columns:repeat(2,1fr)}
+  .ark-page .ark-port-grid{grid-template-columns:repeat(2,1fr)}
+  .ark-page .ark-testi-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:920px){
+  .ark-page .ark-nav-links{display:none}
+  .ark-page .ark-burger{display:flex}
+  .ark-page .ark-nav-cta .ark-btn{display:none}
+  .ark-page .ark-solution-grid{grid-template-columns:1fr}
+  .ark-page .ark-sol-visual{max-width:520px;margin-inline:auto}
+  .ark-page .ark-exp-slide{flex-basis:calc((100% - 22px)/2)} /* [REV-1] slider: 2 kartu */
+  .ark-page .ark-price-grid{grid-template-columns:1fr;max-width:470px;margin-inline:auto;gap:34px}
+  .ark-page .ark-price-card.ark-popular{margin-top:0}
+  .ark-page .ark-footer-grid{grid-template-columns:1fr 1fr;gap:34px}
+  .ark-page .ark-footer-brand{grid-column:1/-1}
+}
+@media (max-width:860px){
+  .ark-page .ark-tl-line{left:25px;transform:none}
+  .ark-page .ark-step,.ark-page .ark-step:nth-child(even){width:100%;margin-left:0;padding:0 0 0 74px;justify-content:flex-start}
+  .ark-page .ark-step-bubble,.ark-page .ark-step:nth-child(even) .ark-step-bubble{left:-1px;right:auto}
+}
+@media (max-width:760px){
+  .ark-page .ark-grid-6{grid-template-columns:repeat(2,1fr)}
+  .ark-page .ark-feat-grid{grid-template-columns:1fr}
+  .ark-page .ark-stats{grid-template-columns:repeat(2,1fr)}
+  .ark-page .ark-promo-bar{justify-content:center;text-align:center}
+  .ark-page .ark-promo-copy{grid-template-columns:1fr}
+  .ark-page .ark-promo-stat{border-right:0;border-bottom:1.5px dashed rgba(37,99,235,.3);padding-right:0;padding-bottom:22px}
+  .ark-page .ark-promo-points{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .ark-page .ark-grid-6,.ark-page .ark-serv-grid,.ark-page .ark-port-grid,.ark-page .ark-testi-grid{grid-template-columns:1fr}
+  .ark-page .ark-exp-slide{flex-basis:100%} /* [REV-1] slider: 1 kartu */
+  .ark-page .ark-check-list{grid-template-columns:1fr}
+  .ark-page .ark-field-row{grid-template-columns:1fr}
+  .ark-page .ark-hero-actions .ark-btn{flex:1;min-width:150px}
+  .ark-page .ark-ann-text{font-size:12px}
+  /* [REV-3] perbaikan hero-proof mobile agar tidak menumpuk */
+  .ark-page .ark-hero-proof{flex-wrap:wrap;row-gap:12px}
+  .ark-page .ark-hero-proof p{flex:1 1 180px;min-width:0}
+  .ark-page .ark-toast{left:12px;right:12px;bottom:12px;max-width:none}
+  .ark-page .ark-modal-panel{padding:24px 20px}
+  .ark-page .ark-sol-card.a{left:-6px}.ark-page .ark-sol-card.b{right:-6px}
+}
+/* ---------- aksesibilitas: hormati prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .ark-page *,.ark-page *::before,.ark-page *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  .ark-page [data-reveal]{opacity:1!important;transform:none!important}
+  .ark-page .ark-hero [data-entrance]{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+
+<body>
+<div class="ark-page" id="ark-page">
+
+<!-- ===== ARKADEA WEB — SCROLL PROGRESS • bar tipis atas • JS: initScrollFx ===== -->
+<div class="ark-progress" id="ark-progress" aria-hidden="true"><span id="ark-progress-bar"></span></div>
+
+<!-- =========================================
+     ARKADEA WEB — ANNOUNCEMENT BAR
+     FUNGSI : info promo paling atas + tombol ke pricing
+     EDIT   : teks & emoji di bawah; harga diisi otomatis (JS)
+     START
+     ========================================= -->
+<div class="ark-announcement" id="ark-announcement">
+  <div class="ark-ann-inner">
+    <span class="ark-ann-flame" aria-hidden="true">🔥</span>
+    <p class="ark-ann-text">PROMO DESAIN WEBSITE SEDANG BERLANGSUNG! <span>· Mulai <b id="ark-ann-price">Rp99.000</b></span></p>
+    <a href="#ark-pricing" class="ark-ann-btn">Lihat Promo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+</div>
+<!-- =========================================
+     ARKADEA WEB — ANNOUNCEMENT BAR
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — NAVBAR
+     FUNGSI : navigasi sticky glass, tersembunyi di atas &
+              muncul saat scroll (JS), hamburger mobile
+     EDIT   : menu di .ark-nav-links — JANGAN ubah struktur utama
+     START
+     ========================================= -->
+<header class="ark-navbar" id="ark-navbar">
+  <div class="ark-nav-inner">
+    <a href="#top" class="ark-logo" aria-label="Arkadea Web — kembali ke atas">
+      <span class="ark-logo-mark"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
+      <span>ARKADEA<span class="ark-logo-accent">WEB</span></span>
+    </a>
+    <nav class="ark-nav-links" aria-label="Navigasi utama">
+      <a href="#top" class="ark-nav-link ark-active">Home</a>
+      <a href="#ark-services" class="ark-nav-link">Layanan</a>
+      <a href="#ark-portfolio" class="ark-nav-link">Portfolio</a>
+      <a href="#ark-pricing" class="ark-nav-link">Harga</a>
+      <a href="#ark-faq" class="ark-nav-link">FAQ</a>
+    </nav>
+    <div class="ark-nav-cta">
+      <button type="button" class="ark-btn ark-btn-primary ark-btn-sm" data-buy="professional">Beli Sekarang</button>
+      <button type="button" class="ark-burger" id="ark-burger" aria-label="Buka menu" aria-expanded="false" aria-controls="ark-mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="ark-mobile-menu" id="ark-mobile-menu">
+    <a href="#top">Home</a>
+    <a href="#ark-services">Layanan</a>
+    <a href="#ark-portfolio">Portfolio</a>
+    <a href="#ark-pricing">Harga</a>
+    <a href="#ark-faq">FAQ</a>
+    <button type="button" class="ark-btn ark-btn-primary ark-btn-block" data-buy="professional">Beli Sekarang</button>
+  </div>
+</header>
+<!-- =========================================
+     ARKADEA WEB — NAVBAR
+     END
+     ========================================= -->
+
+<main>
+
+<!-- =========================================
+     ARKADEA WEB — HERO
+     FUNGSI : headline utama, CTA, mockup browser + chip melayang
+     EDIT   : teks headline/sub; gambar mockup (picsum seed)
+     START
+     ========================================= -->
+<section class="ark-hero" id="top" aria-label="Intro Arkadea Web">
+  <div class="ark-container ark-hero-grid">
+    <div class="ark-hero-copy">
+      <span class="ark-hero-badge" style="--e:.05s" data-entrance><span class="ark-dot" aria-hidden="true"></span> arkadea.web.id · Jasa Pembuatan Website Profesional</span>
+      <h1 class="ark-hero-title" style="--e:.15s" data-entrance>Website Keren Bikin Bisnismu <span class="ark-gradient-text">Makin Dipercaya.</span></h1>
+      <p class="ark-hero-sub" style="--e:.25s" data-entrance>Kami membantu bisnis, UMKM, sekolah, personal brand, dan berbagai kebutuhan lainnya memiliki website profesional yang modern, cepat, responsive, dan siap digunakan.</p>
+      <p class="ark-hero-type" style="--e:.32s" data-entrance><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i><span id="ark-typewriter">Cocok untuk bisnis UMKM</span><span class="ark-caret" aria-hidden="true"></span></p>
+      <div class="ark-hero-actions" style="--e:.4s" data-entrance>
+        <button type="button" class="ark-btn ark-btn-primary ark-btn-lg" data-buy="professional">Beli Sekarang <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        <a href="#ark-portfolio" class="ark-btn ark-btn-ghost ark-btn-lg">Lihat Portfolio</a>
+      </div>
+      <div class="ark-hero-proof" style="--e:.5s" data-entrance>
+        <div class="ark-avatars" aria-hidden="true">
+          <img src="https://picsum.photos/seed/arkadea-avatar-rina/64/64" alt="" loading="lazy">
+          <img src="https://picsum.photos/seed/arkadea-avatar-bagus/64/64" alt="" loading="lazy">
+          <img src="https://picsum.photos/seed/arkadea-avatar-maya/64/64" alt="" loading="lazy">
+        </div>
+        <p><b>120+ klien</b> sudah membuktikan · <span class="ark-star">★</span> <b>4.9/5</b> rating kepuasan</p>
+      </div>
+    </div>
+
+    <div class="ark-hero-visual" style="--e:.3s" data-entrance>
+      <span class="ark-particle" style="top:6%;left:-4%;animation-delay:.4s" aria-hidden="true"></span>
+      <span class="ark-particle" style="top:16%;right:2%;width:11px;height:11px;animation-delay:1.2s" aria-hidden="true"></span>
+      <span class="ark-particle" style="bottom:10%;left:-6%;width:6px;height:6px;animation-delay:2s" aria-hidden="true"></span>
+      <span class="ark-particle" style="bottom:-2%;right:14%;animation-delay:2.8s" aria-hidden="true"></span>
+
+      <div class="ark-browser ark-tilt" data-tilt-max="5">
+        <div class="ark-browser-bar" aria-hidden="true">
+          <i class="d"></i><i class="d"></i><i class="d"></i>
+          <span class="ark-browser-url"><i class="fa-solid fa-lock"></i> arkadea.web.id</span>
+        </div>
+        <img src="https://picsum.photos/seed/arkadea-website-mockup/720/400" alt="Contoh tampilan website buatan Arkadea Web" width="720" height="400" loading="lazy" decoding="async">
+        <div class="ark-browser-ui" aria-hidden="true">
+          <div class="ark-ui-line w70"></div>
+          <div class="ark-ui-line w45"></div>
+          <div class="ark-ui-cards"><span class="ark-ui-card"></span><span class="ark-ui-card"></span><span class="ark-ui-card"></span></div>
+          <div class="ark-ui-btn"></div>
+        </div>
+      </div>
+
+      <div class="ark-float-chip ark-chip-1"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Fast Loading</div>
+      <div class="ark-float-chip ark-chip-2"><i class="fa-solid fa-star" aria-hidden="true"></i> Rating 4.9/5</div>
+      <div class="ark-float-chip ark-chip-3"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order via WhatsApp</div>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — HERO
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — TRUST / STATISTIK
+     FUNGSI : angka kepercayaan (counter JS) + chip + marquee
+     EDIT   : angka di atribut data-count
+     START
+     ========================================= -->
+<section class="ark-trust" id="ark-trust" aria-label="Kepercayaan klien">
+  <div class="ark-container">
+    <div class="ark-stats">
+      <div class="ark-stat" data-reveal style="--ark-d:0s"><span class="ark-stat-num"><span data-count="120">0</span>+</span><span class="ark-stat-label">Website Dibuat</span></div>
+      <div class="ark-stat" data-reveal style="--ark-d:.08s"><span class="ark-stat-num"><span data-count="98">0</span>%</span><span class="ark-stat-label">Klien Puas</span></div>
+      <div class="ark-stat" data-reveal style="--ark-d:.16s"><span class="ark-stat-num"><span data-count="4.9" data-decimals="1">0</span>★</span><span class="ark-stat-label">Rating Rata-rata</span></div>
+      <div class="ark-stat" data-reveal style="--ark-d:.24s"><span class="ark-stat-num">≤<span data-count="7">0</span> Hari</span><span class="ark-stat-label">Rata-rata Pengerjaan</span></div>
+    </div>
+    <div class="ark-trust-chips" data-reveal>
+      <span class="ark-trust-chip"><i class="fa-solid fa-wand-magic-sparkles"></i> Website Modern</span>
+      <span class="ark-trust-chip"><i class="fa-solid fa-mobile-screen"></i> Responsive</span>
+      <span class="ark-trust-chip"><i class="fa-solid fa-tags"></i> Harga Terjangkau</span>
+      <span class="ark-trust-chip"><i class="fa-solid fa-headset"></i> Support Ramah</span>
+      <span class="ark-trust-chip"><i class="fa-solid fa-bolt"></i> Proses Cepat</span>
+    </div>
+  </div>
+  <div class="ark-marquee" aria-hidden="true">
+    <div class="ark-marquee-track">
+      <span>Website Bisnis</span><span>UMKM</span><span>Sekolah</span><span>Landing Page</span><span>Company Profile</span><span>Portfolio</span><span>Personal Website</span><span>Custom Design</span>
+      <span>Website Bisnis</span><span>UMKM</span><span>Sekolah</span><span>Landing Page</span><span>Company Profile</span><span>Portfolio</span><span>Personal Website</span><span>Custom Design</span>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — TRUST / STATISTIK
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — PROBLEM
+     FUNGSI : menyorot masalah tanpa website (6 kartu)
+     START
+     ========================================= -->
+<section class="ark-section ark-problem" id="ark-problem">
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-triangle-exclamation"></i> Masalah Umum</span>
+      <h2 class="ark-h2">Punya Bisnis Tapi <span class="ark-gradient-text">Belum Punya Website?</span></h2>
+      <p class="ark-sub">Banyak bisnis bagus terlihat biasa saja karena belum punya rumah digital. Kenali tanda-tandanya:</p>
+    </header>
+    <div class="ark-grid-6">
+      <article class="ark-pcard" data-reveal style="--ark-d:0s"><span class="ark-pcard-ico"><i class="fa-solid fa-map-location-dot"></i></span><h3>Sulit Ditemukan Pelanggan</h3><p>Calon pelanggan kesulitan menemukan informasi bisnismu saat mencari di Google.</p></article>
+      <article class="ark-pcard" data-reveal style="--ark-d:.07s"><span class="ark-pcard-ico"><i class="fa-solid fa-briefcase"></i></span><h3>Terlihat Kurang Profesional</h3><p>Tanpa website, bisnis yang bagus pun bisa dianggap biasa saja oleh calon pembeli.</p></article>
+      <article class="ark-pcard" data-reveal style="--ark-d:.14s"><span class="ark-pcard-ico"><i class="fa-solid fa-comments"></i></span><h3>Ditanya Berulang Kali</h3><p>Harga, jam buka, lokasi — pertanyaan yang sama harus dijawab satu per satu setiap hari.</p></article>
+      <article class="ark-pcard" data-reveal style="--ark-d:.21s"><span class="ark-pcard-ico"><i class="fa-solid fa-shield-halved"></i></span><h3>Sulit Membangun Kepercayaan</h3><p>Pelanggan cenderung ragu bertransaksi dengan bisnis yang tidak punya jejak digital.</p></article>
+      <article class="ark-pcard" data-reveal style="--ark-d:.28s"><span class="ark-pcard-ico"><i class="fa-solid fa-flag-checkered"></i></span><h3>Kalah dari Kompetitor</h3><p>Kompetitor dengan website rapi dan lengkap terlihat jauh lebih meyakinkan.</p></article>
+      <article class="ark-pcard" data-reveal style="--ark-d:.35s"><span class="ark-pcard-ico"><i class="fa-solid fa-bullhorn"></i></span><h3>Promosi Sekali Lewat</h3><p>Update di media sosial cepat tenggelam, informasi penting pun susah dicari lagi.</p></article>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — PROBLEM
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — SOLUTION
+     FUNGSI : jawaban Arkadea Web, layout 2 kolom + checklist
+     START
+     ========================================= -->
+<section class="ark-section ark-solution" id="ark-solution">
+  <div class="ark-container ark-solution-grid">
+    <div data-reveal="left">
+      <span class="ark-eyebrow"><i class="fa-solid fa-lightbulb"></i> Solusinya</span>
+      <h2 class="ark-h2">Saatnya Bisnismu Punya <span class="ark-gradient-text">Website Profesional.</span></h2>
+      <p class="ark-sub">Arkadea Web membantu kamu punya website yang tidak cuma enak dilihat, tapi juga bekerja untuk bisnismu — memperkenalkan brand, menjawab pertanyaan pelanggan, dan membangun kepercayaan sejak kunjungan pertama.</p>
+      <div class="ark-check-list">
+        <div class="ark-check"><i class="fa-solid fa-check"></i> Desain modern &amp; bersih</div>
+        <div class="ark-check"><i class="fa-solid fa-check"></i> Responsive di semua device</div>
+        <div class="ark-check"><i class="fa-solid fa-check"></i> Cepat &amp; ringan diakses</div>
+        <div class="ark-check"><i class="fa-solid fa-check"></i> Profesional &amp; mudah dinavigasi</div>
+        <div class="ark-check"><i class="fa-solid fa-check"></i> Konten mudah disesuaikan</div>
+        <div class="ark-check"><i class="fa-solid fa-check"></i> Menguatkan branding &amp; kepercayaan</div>
+      </div>
+      <a href="#ark-pricing" class="ark-btn ark-btn-primary">Lihat Paket Harga <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="ark-sol-visual" data-reveal="right">
+      <div class="ark-sol-main">
+        <img src="https://picsum.photos/seed/arkadea-website-design-studio/640/700" alt="Proses desain website profesional oleh Arkadea Web" width="640" height="700" loading="lazy" decoding="async">
+      </div>
+      <div class="ark-sol-card a"><i class="fa-solid fa-mobile-screen"></i><span>Mobile Friendly<small>Sempurna di HP</small></span></div>
+      <div class="ark-sol-card b"><i class="fa-solid fa-heart"></i><span>98% Rekomendasi<small>dari klien kami</small></span></div>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — SOLUTION
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — CUSTOMER EXPERIENCE  [REV-1]
+     FUNGSI : pengalaman pelanggan sebagai SLIDER PARALLAX
+              (autoplay ping-pong, prev/next, dots, drag/swipe;
+              ornamen & avatar bergerak parallax saat scroll)
+     EDIT   : isi kartu & gap track (CSS gap 22px = JS GAP 22)
+     START
+     ========================================= -->
+<section class="ark-section ark-experience" id="ark-experience">
+  <span class="ark-exp-orb ark-orb-1" data-px="0.14" aria-hidden="true"></span>
+  <span class="ark-exp-orb ark-orb-2" data-px="-0.10" aria-hidden="true"></span>
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-heart"></i> Pengalaman Pelanggan</span>
+      <h2 class="ark-h2">Pengalaman <span class="ark-gradient-text">Pelanggan</span></h2>
+      <p class="ark-sub">Cerita asli dari mereka yang sudah merasakan hasilnya.</p>
+    </header>
+
+    <div class="ark-exp-slider" data-reveal>
+      <div class="ark-exp-viewport" id="ark-exp-viewport" role="region" aria-roledescription="carousel" aria-label="Pengalaman pelanggan">
+        <div class="ark-exp-track" id="ark-exp-track">
+          <article class="ark-exp-slide" role="group" aria-label="1 dari 6">
+            <div class="ark-exp-card">
+              <div class="ark-exp-head">
+                <span class="ark-exp-avatar"><img src="https://picsum.photos/seed/arkadea-avatar-rina/100/100" alt="Foto Rina Amelia" loading="lazy"></span>
+                <div><div class="ark-exp-name">Rina Amelia</div><span class="ark-exp-cat">UMKM · Kopi Senja</span></div>
+              </div>
+              <blockquote>“Website-nya keren banget! Pelanggan jadi gampang lihat menu dan langsung order lewat WhatsApp. Orderan naik terasa.”</blockquote>
+              <div class="ark-stars" aria-label="Rating 5 dari 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+          </article>
+          <article class="ark-exp-slide" role="group" aria-label="2 dari 6">
+            <div class="ark-exp-card">
+              <div class="ark-exp-head">
+                <span class="ark-exp-avatar"><img src="https://picsum.photos/seed/arkadea-avatar-bagus/100/100" alt="Foto Bagus Pratama" loading="lazy"></span>
+                <div><div class="ark-exp-name">Bagus Pratama</div><span class="ark-exp-cat">Sekolah</span></div>
+              </div>
+              <blockquote>“Website sekolah kami jadi terlihat rapi dan modern. Orang tua murid sekarang mudah sekali mencari informasi.”</blockquote>
+              <div class="ark-stars" aria-label="Rating 5 dari 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+          </article>
+          <article class="ark-exp-slide" role="group" aria-label="3 dari 6">
+            <div class="ark-exp-card">
+              <div class="ark-exp-head">
+                <span class="ark-exp-avatar"><img src="https://picsum.photos/seed/arkadea-avatar-dedi/100/100" alt="Foto Dedi Kurniawan" loading="lazy"></span>
+                <div><div class="ark-exp-name">Dedi Kurniawan</div><span class="ark-exp-cat">Freelancer</span></div>
+              </div>
+              <blockquote>“Portfolio-ku jadi jauh lebih profesional. Beberapa klien baru datang langsung dari website. Worth it!”</blockquote>
+              <div class="ark-stars" aria-label="Rating 4.5 dari 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+            </div>
+          </article>
+          <article class="ark-exp-slide" role="group" aria-label="4 dari 6">
+            <div class="ark-exp-card">
+              <div class="ark-exp-head">
+                <span class="ark-exp-avatar"><img src="https://picsum.photos/seed/arkadea-avatar-salsa/100/100" alt="Foto Salsabila" loading="lazy"></span>
+                <div><div class="ark-exp-name">Salsabila Putri</div><span class="ark-exp-cat">Personal Brand</span></div>
+              </div>
+              <blockquote>“Prosesnya cepat, komunikasinya enak, dan hasilnya melebihi ekspektasi. Revisi juga dilayani dengan sabar.”</blockquote>
+              <div class="ark-stars" aria-label="Rating 5 dari 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+          </article>
+          <article class="ark-exp-slide" role="group" aria-label="5 dari 6">
+            <div class="ark-exp-card">
+              <div class="ark-exp-head">
+                <span class="ark-exp-avatar"><img src="https://picsum.photos/seed/arkadea-avatar-andi/100/100" alt="Foto Andi Saputra" loading="lazy"></span>
+                <div><div class="ark-exp-name">Andi Saputra</div><span class="ark-exp-cat">Startup</span></div>
+              </div>
+              <blockquote>“Landing page-nya conversion-focused banget. Presentasi produk ke calon investor jadi lebih meyakinkan.”</blockquote>
+              <div class="ark-stars" aria-label="Rating 5 dari 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+          </article>
+          <article class="ark-exp-slide" role="group" aria-label="6 dari 6">
+            <div class="ark-exp-card">
+              <div class="ark-exp-head">
+                <span class="ark-exp-avatar"><img src="https://picsum.photos/seed/arkadea-avatar-maya/100/100" alt="Foto Maya Larasati" loading="lazy"></span>
+                <div><div class="ark-exp-name">Maya Larasati</div><span class="ark-exp-cat">UMKM · Toko Kue</span></div>
+              </div>
+              <blockquote>“Harganya terjangkau tapi kualitasnya premium. Katalog kue-ku sekarang tampil cantik banget. Recommended!”</blockquote>
+              <div class="ark-stars" aria-label="Rating 5 dari 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="ark-exp-nav">
+        <button type="button" class="ark-exp-arrow" id="ark-exp-prev" aria-label="Slide sebelumnya"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+        <div class="ark-exp-dots" id="ark-exp-dots"></div>
+        <button type="button" class="ark-exp-arrow" id="ark-exp-next" aria-label="Slide berikutnya"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — CUSTOMER EXPERIENCE
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — SERVICES
+     FUNGSI : 8 layanan + ikon melayang + 3D tilt (JS)
+     START
+     ========================================= -->
+<section class="ark-section ark-services" id="ark-services">
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-layer-group"></i> Layanan</span>
+      <h2 class="ark-h2">Apa yang Bisa <span class="ark-gradient-text">Kami Buat?</span></h2>
+      <p class="ark-sub">Dari landing page sederhana sampai website custom — semua dikerjakan dengan standar desain premium.</p>
+    </header>
+    <div class="ark-serv-grid">
+      <article class="ark-serv-card ark-tilt" data-tilt-max="7" data-reveal style="--ark-d:0s"><span class="ark-serv-ico" style="--fd:0s"><i class="fa-solid fa-briefcase"></i></span><h3>Website Bisnis</h3><p>Profil bisnis lengkap: layanan, keunggulan, dan kontak yang mudah ditemukan pelanggan.</p></article>
+      <article class="ark-serv-card ark-tilt" data-tilt-max="7" data-reveal style="--ark-d:.06s"><span class="ark-serv-ico" style="--fd:.6s"><i class="fa-solid fa-store"></i></span><h3>Website UMKM</h3><p>Tampilkan produk &amp; menu usahamu dengan rapi, plus tombol order langsung ke WhatsApp.</p></article>
+      <article class="ark-serv-card ark-tilt" data-tilt-max="7" data-reveal style="--ark-d:.12s"><span class="ark-serv-ico" style="--fd:1.2s"><i class="fa-solid fa-graduation-cap"></i></span><h3>Website Sekolah</h3><p>Media informasi resmi untuk profil sekolah, berita, pendaftaran, dan kegiatan siswa.</p></article>
+      <article class="ark-serv-card ark-tilt" data-tilt-max="7" data-reveal style="--ark-d:.18s"><span class="ark-serv-ico" style="--fd:1.8s"><i class="fa-solid fa-rocket"></i></span><h3>Landing Page</h3><p>Satu halaman fokus untuk promosi, campaign, atau jualan — dengan CTA yang kuat.</p></article>
+      <article class="ark-serv-card ark-tilt" data-tilt-max="7" data-reveal style="--ark-d:0s"><span class="ark-serv-ico" style="--fd:.9s"><i class="fa-solid fa-images"></i></span><h3>Portfolio Website</h3><p>Showcase karya terbaikmu agar klien makin yakin dengan kualitas kerjamu.</p></article>
+      <article class="ark-serv-card ark-tilt" data-tilt-max="7" data-reveal style="--ark-d:.06s"><span class="ark-serv-ico" style="--fd:1.5s"><i class="fa-solid fa-user"></i></span><h3>Personal Website</h3><p>Rumah digital untuk personal branding: CV, cerita, dan pencapaianmu dalam satu tempat.</p></article>
+      <article class="ark-serv-card ark-tilt" data-tilt-max="7" data-reveal style="--ark-d:.12s"><span class="ark-serv-ico" style="--fd:2.1s"><i class="fa-solid fa-city"></i></span><h3>Company Profile</h3><p>Profil perusahaan yang rapi dan kredibel untuk kebutuhan partner, klien, dan investor.</p></article>
+      <article class="ark-serv-card ark-tilt" data-tilt-max="7" data-reveal style="--ark-d:.18s"><span class="ark-serv-ico" style="--fd:2.7s"><i class="fa-solid fa-wand-magic-sparkles"></i></span><h3>Custom Website</h3><p>Punya kebutuhan khusus? Ceritakan idemu, kami wujudkan desainnya sebaik mungkin.</p></article>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — SERVICES
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — FEATURES
+     FUNGSI : 8 keunggulan teknis, layout bernomor
+     START
+     ========================================= -->
+<section class="ark-section ark-features" id="ark-features">
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-gem"></i> Keunggulan</span>
+      <h2 class="ark-h2">Bukan Cuma <span class="ark-gradient-text">Kelihatan Bagus.</span></h2>
+      <p class="ark-sub">Setiap website Arkadea dibangun dengan standar teknis yang serius.</p>
+    </header>
+    <div class="ark-feat-grid">
+      <article class="ark-feat-card" data-reveal style="--ark-d:0s"><span class="ark-feat-num">01</span><span class="ark-feat-ico"><i class="fa-solid fa-mobile-screen"></i></span><div><h3>Responsive</h3><p>Tampil sempurna di smartphone, tablet, dan desktop.</p></div></article>
+      <article class="ark-feat-card" data-reveal style="--ark-d:.06s"><span class="ark-feat-num">02</span><span class="ark-feat-ico"><i class="fa-solid fa-hand-pointer"></i></span><div><h3>Mobile Friendly</h3><p>Didesain mobile-first, nyaman disentuh dan dibaca.</p></div></article>
+      <article class="ark-feat-card" data-reveal style="--ark-d:.12s"><span class="ark-feat-num">03</span><span class="ark-feat-ico"><i class="fa-solid fa-palette"></i></span><div><h3>Modern UI</h3><p>Desain kekinian yang selaras dengan identitas brand-mu.</p></div></article>
+      <article class="ark-feat-card" data-reveal style="--ark-d:.18s"><span class="ark-feat-num">04</span><span class="ark-feat-ico"><i class="fa-solid fa-bolt"></i></span><div><h3>Fast Loading</h3><p>Ringan dan cepat diakses, tidak bikin pengunjung kabur.</p></div></article>
+      <article class="ark-feat-card" data-reveal style="--ark-d:0s"><span class="ark-feat-num">05</span><span class="ark-feat-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></span><div><h3>SEO Friendly</h3><p>Struktur rapi agar mudah ditemukan mesin pencari.</p></div></article>
+      <article class="ark-feat-card" data-reveal style="--ark-d:.06s"><span class="ark-feat-num">06</span><span class="ark-feat-ico"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><h3>Interactive Animation</h3><p>Animasi halus yang bikin pengalaman pengunjung lebih hidup.</p></div></article>
+      <article class="ark-feat-card" data-reveal style="--ark-d:.12s"><span class="ark-feat-num">07</span><span class="ark-feat-ico"><i class="fa-solid fa-sliders"></i></span><div><h3>Easy Customization</h3><p>Konten dan tampilan mudah disesuaikan kapan saja.</p></div></article>
+      <article class="ark-feat-card" data-reveal style="--ark-d:.18s"><span class="ark-feat-num">08</span><span class="ark-feat-ico"><i class="fa-solid fa-award"></i></span><div><h3>Professional Design</h3><p>Standar desain agensi dengan harga yang tetap bersahabat.</p></div></article>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — FEATURES
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — PORTFOLIO
+     FUNGSI : contoh tampilan + filter kategori (JS)
+     EDIT   : gambar picsum seed, judul, deskripsi tiap kartu
+     START
+     ========================================= -->
+<section class="ark-section ark-portfolio" id="ark-portfolio">
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-images"></i> Portfolio</span>
+      <h2 class="ark-h2">Contoh Tampilan yang <span class="ark-gradient-text">Bisa Dibuat.</span></h2>
+      <p class="ark-sub">Setiap desain disesuaikan dengan karakter brand-mu. Ini beberapa arah gaya yang bisa kamu pilih.</p>
+    </header>
+    <div class="ark-filter" data-reveal role="tablist" aria-label="Filter kategori portfolio">
+      <button type="button" class="ark-filter-btn ark-active" data-filter="all">Semua</button>
+      <button type="button" class="ark-filter-btn" data-filter="business">Business</button>
+      <button type="button" class="ark-filter-btn" data-filter="school">School</button>
+      <button type="button" class="ark-filter-btn" data-filter="portfolio">Portfolio</button>
+      <button type="button" class="ark-filter-btn" data-filter="landing">Landing Page</button>
+      <button type="button" class="ark-filter-btn" data-filter="umkm">UMKM</button>
+    </div>
+    <div class="ark-port-grid">
+      <article class="ark-port-card" data-cat="umkm" data-reveal style="--ark-d:0s">
+        <div class="ark-port-media">
+          <span class="ark-port-cat">UMKM</span>
+          <img src="https://picsum.photos/seed/arkadea-umkm-coffee/800/600" alt="Desain website UMKM kedai kopi Aurora Coffee" loading="lazy" decoding="async">
+          <div class="ark-port-overlay"><h3>Aurora Coffee</h3><p>Katalog menu + tombol order WhatsApp untuk kedai kopi lokal.</p></div>
+        </div>
+      </article>
+      <article class="ark-port-card" data-cat="school" data-reveal style="--ark-d:.08s">
+        <div class="ark-port-media">
+          <span class="ark-port-cat">School</span>
+          <img src="https://picsum.photos/seed/arkadea-school-website/800/600" alt="Desain website sekolah SMA Nusantara" loading="lazy" decoding="async">
+          <div class="ark-port-overlay"><h3>SMA Nusantara</h3><p>Profil sekolah, berita kegiatan, dan informasi pendaftaran.</p></div>
+        </div>
+      </article>
+      <article class="ark-port-card" data-cat="portfolio" data-reveal style="--ark-d:.16s">
+        <div class="ark-port-media">
+          <span class="ark-port-cat">Portfolio</span>
+          <img src="https://picsum.photos/seed/arkadea-portfolio-studio/800/600" alt="Desain website portfolio Studio Deka" loading="lazy" decoding="async">
+          <div class="ark-port-overlay"><h3>Studio Deka</h3><p>Showcase karya desainer dengan galeri bersih dan elegan.</p></div>
+        </div>
+      </article>
+      <article class="ark-port-card" data-cat="landing" data-reveal style="--ark-d:0s">
+        <div class="ark-port-media">
+          <span class="ark-port-cat">Landing Page</span>
+          <img src="https://picsum.photos/seed/arkadea-landing-launch/800/600" alt="Desain landing page peluncuran produk Arkadea" loading="lazy" decoding="async">
+          <div class="ark-port-overlay"><h3>LaunchKit</h3><p>Landing page promosi produk dengan CTA yang menonjol.</p></div>
+        </div>
+      </article>
+      <article class="ark-port-card" data-cat="business" data-reveal style="--ark-d:.08s">
+        <div class="ark-port-media">
+          <span class="ark-port-cat">Business</span>
+          <img src="https://picsum.photos/seed/arkadea-business-corporate/800/600" alt="Desain website company profile PT Lentera Karya" loading="lazy" decoding="async">
+          <div class="ark-port-overlay"><h3>PT Lentera Karya</h3><p>Company profile profesional untuk kebutuhan partner &amp; klien.</p></div>
+        </div>
+      </article>
+      <article class="ark-port-card" data-cat="umkm" data-reveal style="--ark-d:.16s">
+        <div class="ark-port-media">
+          <span class="ark-port-cat">UMKM</span>
+          <img src="https://picsum.photos/seed/arkadea-umkm-bakery/800/600" alt="Desain website UMKM toko kue Dapur Kirana" loading="lazy" decoding="async">
+          <div class="ark-port-overlay"><h3>Dapur Kirana</h3><p>Katalog kue rumahan dengan galeri foto dan testimoni.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — PORTFOLIO
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — TIMELINE PROSES
+     FUNGSI : 5 langkah dari ide sampai website jadi
+              garis terisi saat scroll + langkah aktif (JS)
+     START
+     ========================================= -->
+<section class="ark-section ark-process" id="ark-process">
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-route"></i> Proses</span>
+      <h2 class="ark-h2">Dari Ide Jadi <span class="ark-gradient-text">Website.</span></h2>
+      <p class="ark-sub">Prosesnya simpel dan transparan — kamu cukup duduk manis, kami yang kerjakan.</p>
+    </header>
+    <div class="ark-timeline" id="ark-timeline">
+      <div class="ark-tl-line" aria-hidden="true"><span class="ark-tl-fill" id="ark-tl-fill"></span></div>
+      <div class="ark-tl-steps">
+        <div class="ark-step" data-reveal="left">
+          <span class="ark-step-bubble">01</span>
+          <div class="ark-step-card"><span class="ark-step-ico"><i class="fa-solid fa-comments"></i></span><div><h3>Konsultasi</h3><p>Diskusikan kebutuhan, tujuan, dan referensi website impianmu — gratis.</p></div></div>
+        </div>
+        <div class="ark-step" data-reveal="right">
+          <span class="ark-step-bubble">02</span>
+          <div class="ark-step-card"><span class="ark-step-ico"><i class="fa-solid fa-box-open"></i></span><div><h3>Pilih Paket</h3><p>Pilih paket yang paling sesuai dengan kebutuhan dan budget-mu.</p></div></div>
+        </div>
+        <div class="ark-step" data-reveal="left">
+          <span class="ark-step-bubble">03</span>
+          <div class="ark-step-card"><span class="ark-step-ico"><i class="fa-solid fa-pen-ruler"></i></span><div><h3>Proses Desain</h3><p>Website mulai dibuat dan disesuaikan dengan karakter brand-mu.</p></div></div>
+        </div>
+        <div class="ark-step" data-reveal="right">
+          <span class="ark-step-bubble">04</span>
+          <div class="ark-step-card"><span class="ark-step-ico"><i class="fa-solid fa-rotate"></i></span><div><h3>Revisi</h3><p>Lakukan penyesuaian sampai hasilnya benar-benar pas dengan keinginanmu.</p></div></div>
+        </div>
+        <div class="ark-step" data-reveal="left">
+          <span class="ark-step-bubble">05</span>
+          <div class="ark-step-card"><span class="ark-step-ico"><i class="fa-solid fa-rocket"></i></span><div><h3>Website Siap</h3><p>Website selesai, online, dan siap digunakan untuk mengembangkan bisnismu.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — TIMELINE PROSES
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — PRICING + COUNTDOWN
+     FUNGSI : 3 paket harga + banner countdown promo
+     EDIT   : harga & fitur; angka diisi dari ARKADEA_CONFIG (JS)
+     START
+     ========================================= -->
+<section class="ark-section ark-pricing" id="ark-pricing">
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-tags"></i> Harga</span>
+      <h2 class="ark-h2">Pilih Paket <span class="ark-gradient-text">Website-mu.</span></h2>
+      <p class="ark-sub">Sekali bayar, tanpa biaya tersembunyi. Semua paket sudah termasuk konsultasi dan revisi.</p>
+    </header>
+
+    <div class="ark-promo-bar" data-reveal>
+      <div class="ark-promo-left">
+        <span class="ark-promo-flame" aria-hidden="true">🔥</span>
+        <div><strong>Promo Desain Website Berlangsung!</strong><span>Harga spesial berakhir dalam:</span></div>
+      </div>
+      <div class="ark-countdown" id="ark-countdown" role="timer" aria-label="Hitung mundur promo">
+        <div class="ark-cd-box"><span id="ark-cd-d">00</span><small>Hari</small></div>
+        <div class="ark-cd-box"><span id="ark-cd-h">00</span><small>Jam</small></div>
+        <div class="ark-cd-box"><span id="ark-cd-m">00</span><small>Menit</small></div>
+        <div class="ark-cd-box"><span id="ark-cd-s">00</span><small>Detik</small></div>
+      </div>
+    </div>
+
+    <div class="ark-price-grid">
+      <!-- STARTER -->
+      <article class="ark-price-card ark-tilt" data-plan="starter" data-tilt-max="5" data-reveal style="--ark-d:0s">
+        <span class="ark-price-badge">PALING TERJANGKAU</span>
+        <h3 class="ark-price-name">Starter</h3>
+        <p class="ark-price-desc">Langkah pertama bisnismu tampil online.</p>
+        <div class="ark-price-box">
+          <span class="ark-price-normal" data-price="normal">Rp249.000</span>
+          <div class="ark-price-main"><span class="ark-price-promo" data-price="promo">Rp99.000</span><span class="ark-price-per">/ website</span></div>
+          <span class="ark-price-save" data-price="save">Hemat Rp150.000</span>
+        </div>
+        <ul class="ark-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Landing Page</li>
+          <li><i class="fa-solid fa-circle-check"></i> Responsive</li>
+          <li><i class="fa-solid fa-circle-check"></i> Modern Design</li>
+          <li><i class="fa-solid fa-circle-check"></i> Basic Animation</li>
+          <li><i class="fa-solid fa-circle-check"></i> Mobile Friendly</li>
+          <li><i class="fa-solid fa-circle-check"></i> WhatsApp Button</li>
+        </ul>
+        <button type="button" class="ark-btn ark-btn-primary ark-btn-block" data-buy="starter">Beli Sekarang</button>
+      </article>
+      <!-- PROFESSIONAL (paling menonjol) -->
+      <article class="ark-price-card ark-popular ark-tilt" data-plan="professional" data-tilt-max="5" data-reveal style="--ark-d:.1s">
+        <span class="ark-price-badge">★ PALING POPULER</span>
+        <h3 class="ark-price-name">Professional</h3>
+        <p class="ark-price-desc">Paket favorit untuk bisnis yang serius berkembang.</p>
+        <div class="ark-price-box">
+          <span class="ark-price-normal" data-price="normal">Rp490.000</span>
+          <div class="ark-price-main"><span class="ark-price-promo" data-price="promo">Rp120.000</span><span class="ark-price-per">/ website</span></div>
+          <span class="ark-price-save" data-price="save">Hemat Rp370.000</span>
+        </div>
+        <ul class="ark-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Semua fitur Starter</li>
+          <li><i class="fa-solid fa-circle-check"></i> Multi Section</li>
+          <li><i class="fa-solid fa-circle-check"></i> Premium Animation</li>
+          <li><i class="fa-solid fa-circle-check"></i> Portfolio</li>
+          <li><i class="fa-solid fa-circle-check"></i> FAQ</li>
+          <li><i class="fa-solid fa-circle-check"></i> Custom Section</li>
+          <li><i class="fa-solid fa-circle-check"></i> Advanced Interaction</li>
+        </ul>
+        <button type="button" class="ark-btn ark-btn-primary ark-btn-block" data-buy="professional">Beli Sekarang</button>
+      </article>
+      <!-- ULTIMATE -->
+      <article class="ark-price-card ark-tilt" data-plan="ultimate" data-tilt-max="5" data-reveal style="--ark-d:.2s">
+        <span class="ark-price-badge">ULTIMATE</span>
+        <h3 class="ark-price-name">Ultimate</h3>
+        <p class="ark-price-desc">Desain custom penuh untuk hasil paling maksimal.</p>
+        <div class="ark-price-box">
+          <span class="ark-price-normal" data-price="normal">Rp799.000</span>
+          <div class="ark-price-main"><span class="ark-price-promo" data-price="promo">Rp229.000</span><span class="ark-price-per">/ website</span></div>
+          <span class="ark-price-save" data-price="save">Hemat Rp570.000</span>
+        </div>
+        <ul class="ark-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Semua fitur Professional</li>
+          <li><i class="fa-solid fa-circle-check"></i> Custom Design</li>
+          <li><i class="fa-solid fa-circle-check"></i> Advanced UI</li>
+          <li><i class="fa-solid fa-circle-check"></i> Premium Animation</li>
+          <li><i class="fa-solid fa-circle-check"></i> Custom Feature</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority Support</li>
+        </ul>
+        <button type="button" class="ark-btn ark-btn-primary ark-btn-block" data-buy="ultimate">Beli Sekarang</button>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — PRICING + COUNTDOWN
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — PROMO (eks-VOUCHER)  [REV-2]
+     FUNGSI : kata-kata promosi (desain panel tetap sama).
+              Angka hemat % dihitung otomatis dari harga di
+              ARKADEA_CONFIG; voucher tetap berlaku di checkout.
+     START
+     ========================================= -->
+<section class="ark-section ark-voucher" id="ark-voucher">
+  <div class="ark-container">
+    <div class="ark-voucher-panel" data-reveal="scale">
+      <header class="ark-section-head" style="margin-bottom:0">
+        <span class="ark-eyebrow"><i class="fa-solid fa-bullhorn"></i> Promo Spesial</span>
+        <h2 class="ark-h2">Website Premium, <span class="ark-gradient-text">Harga Bersahabat.</span></h2>
+        <p class="ark-sub">Tampil profesional tidak harus mahal. Selama periode promo berlangsung, semua paket Arkadea Web bisa kamu dapatkan dengan harga paling miring.</p>
+      </header>
+
+      <div class="ark-promo-copy">
+        <div class="ark-promo-stat">
+          <span class="ark-promo-big"><span id="ark-promo-big-num">75</span><span>%</span></span>
+          <p>hemat hingga <b>75%</b> dari harga normal — khusus pemesanan selama promo berlangsung.</p>
+        </div>
+        <ul class="ark-promo-points">
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Gratis konsultasi &amp; revisi</li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Pengerjaan cepat &amp; bergaransi</li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Desain premium standar agensi</li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Support ramah sampai online</li>
+        </ul>
+      </div>
+
+      <div class="ark-promo-cta">
+        <a href="#ark-pricing" class="ark-btn ark-btn-primary ark-btn-lg">Klaim Promo Sekarang <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <p class="ark-voucher-note"><i class="fa-solid fa-circle-info"></i> Punya kode voucher? Masukkan di form checkout — potongan dihitung dari harga promo, jadi hasilnya makin hemat.</p>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — PROMO (eks-VOUCHER)
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — TESTIMONIALS (ringkas)
+     FUNGSI : rating agregat + kutipan pendek pendukung
+     START
+     ========================================= -->
+<section class="ark-section ark-testimonials" id="ark-testimonials">
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-quote-left"></i> Testimoni</span>
+      <h2 class="ark-h2">Kata Mereka tentang <span class="ark-gradient-text">Arkadea.</span></h2>
+    </header>
+    <div class="ark-testi-grid">
+      <div class="ark-testi-rating" data-reveal style="--ark-d:0s">
+        <span class="ark-testi-big">4.9</span>
+        <div class="ark-stars" aria-label="Rating 4.9 dari 5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>kepuasan rata-rata dari 100+ klien Arkadea Web.</p>
+      </div>
+      <article class="ark-quote-card" data-reveal style="--ark-d:.08s">
+        <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+        <blockquote>“Pengerjaannya cepat dan hasilnya rapi. Langsung terasa bedanya untuk usaha saya.”</blockquote>
+        <footer>Fajar Ramadhan <span>Owner Bengkel Motor</span></footer>
+      </article>
+      <article class="ark-quote-card" data-reveal style="--ark-d:.16s">
+        <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+        <blockquote>“Komunikasinya enak, revisi dibalas cepat. Nggak nyesel pilih Arkadea Web.”</blockquote>
+        <footer>Laila Hasanah <span>Pemilik Online Shop</span></footer>
+      </article>
+      <article class="ark-quote-card" data-reveal style="--ark-d:.24s">
+        <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+        <blockquote>“Harganya masuk akal banget untuk kualitas se-premium ini. Komunitas kami jadi makin kredibel.”</blockquote>
+        <footer>Yusuf Maulana <span>Ketua Komunitas</span></footer>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — TESTIMONIALS
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — FAQ
+     FUNGSI : accordion tanya-jawab (animasi grid, satu terbuka)
+     START
+     ========================================= -->
+<section class="ark-section ark-faq" id="ark-faq">
+  <div class="ark-container">
+    <header class="ark-section-head" data-reveal>
+      <span class="ark-eyebrow"><i class="fa-solid fa-circle-question"></i> FAQ</span>
+      <h2 class="ark-h2">Pertanyaan yang <span class="ark-gradient-text">Sering Ditanyakan.</span></h2>
+    </header>
+    <div class="ark-faq-list">
+      <div class="ark-faq-item" data-reveal style="--ark-d:0s">
+        <button type="button" class="ark-faq-q" aria-expanded="false">Apakah website responsive?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+        <div class="ark-faq-a"><div><p>Ya, website dirancang agar nyaman digunakan pada smartphone, tablet, dan desktop.</p></div></div>
+      </div>
+      <div class="ark-faq-item" data-reveal style="--ark-d:.05s">
+        <button type="button" class="ark-faq-q" aria-expanded="false">Apakah desain bisa disesuaikan?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+        <div class="ark-faq-a"><div><p>Ya, desain dan konten dapat disesuaikan sesuai kebutuhan.</p></div></div>
+      </div>
+      <div class="ark-faq-item" data-reveal style="--ark-d:.1s">
+        <button type="button" class="ark-faq-q" aria-expanded="false">Apakah bisa digunakan untuk UMKM?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+        <div class="ark-faq-a"><div><p>Ya. Paket kami sangat cocok untuk UMKM — lengkap dengan katalog produk dan tombol order WhatsApp.</p></div></div>
+      </div>
+      <div class="ark-faq-item" data-reveal style="--ark-d:.15s">
+        <button type="button" class="ark-faq-q" aria-expanded="false">Apakah bisa digunakan untuk sekolah?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+        <div class="ark-faq-a"><div><p>Ya. Kami biasa membuat website sekolah untuk profil, berita, dan informasi pendaftaran.</p></div></div>
+      </div>
+      <div class="ark-faq-item" data-reveal style="--ark-d:.2s">
+        <button type="button" class="ark-faq-q" aria-expanded="false">Apakah bisa request desain?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+        <div class="ark-faq-a"><div><p>Ya, selama sesuai ruang lingkup paket.</p></div></div>
+      </div>
+      <div class="ark-faq-item" data-reveal style="--ark-d:.25s">
+        <button type="button" class="ark-faq-q" aria-expanded="false">Bagaimana proses pembelian?<i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+        <div class="ark-faq-a"><div><p>Pilih paket, isi form checkout, gunakan voucher jika tersedia, lalu lanjutkan melalui WhatsApp. Tim kami akan membalas dan memproses pesananmu.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — FAQ
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — FINAL CTA
+     FUNGSI : ajakan penutup besar + tombol beli & konsultasi WA
+     START
+     ========================================= -->
+<section class="ark-section ark-cta" id="ark-cta">
+  <div class="ark-container">
+    <div class="ark-cta-panel" data-reveal="scale">
+      <h2>Siap Punya Website yang Bikin Bisnismu <em>Lebih Dipercaya?</em></h2>
+      <p>Jangan biarkan bisnis bagus terlihat biasa saja. Saatnya tampil lebih profesional dengan website yang sesuai dengan brand-mu.</p>
+      <div class="ark-cta-actions">
+        <button type="button" class="ark-btn ark-btn-white ark-btn-lg" data-buy="professional"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Beli Sekarang</button>
+        <a class="ark-btn ark-btn-outline-w ark-btn-lg ark-wa-link" id="ark-wa-cta" href="https://wa.me/6285806326612" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Konsultasi Gratis</a>
+      </div>
+      <span class="ark-cta-note">Gratis konsultasi · Balasan cepat · Bisa tanya-tanya dulu tanpa komitmen</span>
+    </div>
+  </div>
+</section>
+<!-- =========================================
+     ARKADEA WEB — FINAL CTA
+     END
+     ========================================= -->
+
+</main>
+
+<!-- =========================================
+     ARKADEA WEB — FOOTER
+     FUNGSI : brand, navigasi, kontak, copyright & credit
+     START
+     ========================================= -->
+<footer class="ark-footer" id="ark-footer">
+  <div class="ark-container">
+    <div class="ark-footer-grid">
+      <div class="ark-footer-brand">
+        <a href="#top" class="ark-logo"><span class="ark-logo-mark"><i class="fa-solid fa-code" aria-hidden="true"></i></span><span>ARKADEA<span class="ark-logo-accent">WEB</span></span></a>
+        <p class="ark-footer-desc">Jasa pembuatan website profesional dengan harga terjangkau. Modern, cepat, responsive, dan siap dipakai untuk mengembangkan bisnismu.</p>
+        <span class="ark-footer-domain"><i class="fa-solid fa-globe" aria-hidden="true"></i> arkadea.web.id</span>
+      </div>
+      <nav class="ark-footer-col" aria-label="Navigasi footer">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#top"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Home</a></li>
+          <li><a href="#ark-services"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Layanan</a></li>
+          <li><a href="#ark-portfolio"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Portfolio</a></li>
+          <li><a href="#ark-pricing"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> Harga</a></li>
+          <li><a href="#ark-faq"><i class="fa-solid fa-angle-right" aria-hidden="true"></i> FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="ark-footer-col">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a class="ark-wa-link" href="https://wa.me/6285806326612" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp — <span class="ark-wa-num">0858-0632-6612</span></a></li>
+          <li><a href="https://arkadea.web.id" target="_blank" rel="noopener"><i class="fa-solid fa-globe" aria-hidden="true"></i> arkadea.web.id</a></li>
+          <li><a href="mailto:halo@arkadea.web.id"><i class="fa-solid fa-envelope" aria-hidden="true"></i> halo@arkadea.web.id</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ark-footer-bottom">
+      <p>© 2026 Arkadea Web. All Rights Reserved.</p>
+      <p class="ark-footer-credit">Credit: Arkadea Web — <a href="https://arkadea.web.id" target="_blank" rel="noopener">arkadea.web.id</a></p>
+    </div>
+  </div>
+</footer>
+<!-- =========================================
+     ARKADEA WEB — FOOTER
+     END
+     ========================================= -->
+
+<!-- =========================================
+     ARKADEA WEB — CHECKOUT MODAL
+     FUNGSI : form pemesanan + kalkulasi voucher + lanjut WhatsApp
+     JANGAN hapus id pada field & ringkasan harga.
+     START
+     ========================================= -->
+<div class="ark-modal" id="ark-modal" aria-hidden="true">
+  <div class="ark-modal-overlay" data-close-modal></div>
+  <div class="ark-modal-panel" role="dialog" aria-modal="true" aria-labelledby="ark-modal-title">
+    <button type="button" class="ark-modal-close" data-close-modal aria-label="Tutup jendela"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <header class="ark-modal-head">
+      <span class="ark-modal-ico"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></span>
+      <div><h3 id="ark-modal-title">Checkout Paket Website</h3><p>Isi data singkat, lalu lanjut konfirmasi via WhatsApp.</p></div>
+    </header>
+
+    <form id="ark-checkout-form" novalidate>
+      <div class="ark-field">
+        <label for="ark-f-name">Nama Lengkap *</label>
+        <input type="text" id="ark-f-name" name="name" placeholder="Nama kamu" autocomplete="name">
+      </div>
+      <div class="ark-field-row">
+        <div class="ark-field">
+          <label for="ark-f-wa">Nomor WhatsApp *</label>
+          <input type="tel" id="ark-f-wa" name="wa" placeholder="08xxxxxxxxxx" autocomplete="tel">
+        </div>
+        <div class="ark-field">
+          <label for="ark-f-email">Email</label>
+          <input type="email" id="ark-f-email" name="email" placeholder="nama@email.com" autocomplete="email">
+        </div>
+      </div>
+      <div class="ark-field">
+        <label for="ark-f-plan">Pilih Paket</label>
+        <div class="ark-select"><select id="ark-f-plan" name="plan"></select><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></div>
+      </div>
+      <div class="ark-field">
+        <label for="ark-f-voucher">Kode Voucher</label>
+        <div class="ark-voucher-row">
+          <input type="text" id="ark-f-voucher" placeholder="Contoh: ARKA99" spellcheck="false" autocomplete="off">
+          <button type="button" class="ark-btn ark-btn-soft" id="ark-voucher-apply">Terapkan</button>
+        </div>
+        <p class="ark-voucher-status" id="ark-voucher-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="ark-summary" aria-live="polite">
+        <div class="ark-summary-row"><span>Harga Normal</span><b class="ark-strike" id="ark-sum-normal">Rp0</b></div>
+        <div class="ark-summary-row"><span>Harga Promo</span><b id="ark-sum-promo">Rp0</b></div>
+        <div class="ark-summary-row"><span>Diskon Voucher</span><b id="ark-sum-disc">—</b></div>
+        <div class="ark-summary-row ark-summary-total"><span>Total Pembayaran</span><b id="ark-sum-total">Rp0</b></div>
+      </div>
+
+      <p class="ark-form-error" id="ark-form-error" role="alert"></p>
+      <button type="submit" class="ark-btn ark-btn-primary ark-btn-block ark-btn-lg"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Lanjut ke WhatsApp</button>
+      <p class="ark-modal-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Data kamu hanya dipakai untuk keperluan pemesanan.</p>
+    </form>
+
+    <div class="ark-modal-success" id="ark-modal-success" hidden>
+      <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+      <h4>Pesanan dibuat! 🎉</h4>
+      <p>Membuka WhatsApp… pesan pemesananmu sudah terisi otomatis, tinggal kirim.</p>
+    </div>
+  </div>
+</div>
+<!-- =========================================
+     ARKADEA WEB — CHECKOUT MODAL
+     END
+     ========================================= -->
+
+<!-- ===== ARKADEA WEB — TOAST NOTIFIKASI • JS: showToast / initFakeToast ===== -->
+<div class="ark-toast" id="ark-toast" role="status" aria-live="polite">
+  <span class="ark-toast-ico"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></span>
+  <p class="ark-toast-msg" id="ark-toast-msg"></p>
+  <span class="ark-toast-tag" id="ark-toast-tag">Terimakasih</span>
+</div>
+
+<!-- ===== ARKADEA WEB — BACK TO TOP • JS: initScrollFx ===== -->
+<button type="button" class="ark-totop" id="ark-totop" aria-label="Kembali ke atas"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+
+</div><!-- /.ark-page -->
+
+<script>
+/* =============================================================
+   ARKADEA WEB — CENTRAL CONFIGURATION (JS)
+   -------------------------------------------------------------
+   Edit bagian ini untuk mengubah: brand, nomor WhatsApp, harga,
+   tanggal akhir promo, voucher, dan data toast simulasi.
+   Semua komponen halaman membaca data dari objek ini.
+   ============================================================= */
+const ARKADEA_CONFIG = {
+  brand: "Arkadea Web",
+  domain: "arkadea.web.id",
+  whatsapp: "085806326612",          // format 08xxx, otomatis diubah ke 62xxx
+
+  pricing: {
+    starter:       { nama: "Starter",      normal: 249000, promo: 120000,  badge: "PALING TERJANGKAU" },
+    professional:  { nama: "Professional", normal: 490000, promo: 169000, badge: "PALING POPULER" },
+    ultimate:      { nama: "Ultimate",     normal: 799000, promo: 229000, badge: "ULTIMATE" }
+  },
+
+  promoEnd: "2026-08-31T23:59:59",   // akhir countdown promo (format ISO)
+
+  /* Voucher = potongan (Rupiah) yang dikurangkan dari HARGA PROMO.
+     Total akhir tidak pernah dihitung dari harga normal.
+     Dipakai di form checkout. */
+  vouchers: {
+    "ARKA99":  21000,
+    "ARKA149": 21000,
+    "ARKA200": 21000
+  },
+
+  typeWords: [                        // teks bergilir di hero
+    "Cocok untuk bisnis UMKM",
+    "Cocok untuk sekolah",
+    "Cocok untuk startup",
+    "Cocok untuk personal brand",
+    "Cocok untuk company profile"
+  ],
+
+  /* Toast "baru saja membeli" — DATA SIMULASI/DEMO, bukan transaksi nyata. */
+  toast: {
+    firstDelay: 7000,                // kemunculan pertama (ms)
+    interval: 16000,                 // jarak antar kemunculan (ms)
+    events: [
+      { name: "Azka",   plan: "Professional" },
+      { name: "Rina",   plan: "Starter" },
+      { name: "Bagus",  plan: "Ultimate" },
+      { name: "Salsa",  plan: "Professional" },
+      { name: "Dedi",   plan: "Starter" },
+      { name: "Maya",   plan: "Ultimate" }
+    ]
+  }
+};
+
+(function () {
+  "use strict";
+
+  /* ---------- helper ---------- */
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var rupiah = function (n) { return "Rp" + new Intl.NumberFormat("id-ID").format(Math.max(0, Math.round(n))); };
+  var waLink = function () { return "https://wa.me/" + ARKADEA_CONFIG.whatsapp.replace(/^0/, "62"); };
+
+  /* =============================================================
+     ARKADEA WEB — RENDER CONFIG (JS)
+     Mengisi harga, pilihan paket, angka promo, dan link WA.
+     ============================================================= */
+  function initConfig() {
+    var cfg = ARKADEA_CONFIG;
+
+    var ann = $("#ark-ann-price");
+    if (ann) ann.textContent = rupiah(cfg.pricing.starter.promo);
+
+    $$(".ark-wa-num").forEach(function (el) {
+      var w = cfg.whatsapp;
+      el.textContent = w.length > 8 ? w.slice(0,4) + "-" + w.slice(4,8) + "-" + w.slice(8) : w;
+    });
+    var waText = encodeURIComponent("Halo ARKADEA WEB! Saya mau konsultasi soal pembuatan website. 😊");
+    $$(".ark-wa-link").forEach(function (a) { a.href = waLink() + "?text=" + waText; });
+
+    $$(".ark-price-card").forEach(function (card) {
+      var p = cfg.pricing[card.dataset.plan];
+      if (!p) return;
+      $('[data-price="normal"]', card).textContent = rupiah(p.normal);
+      $('[data-price="promo"]', card).textContent  = rupiah(p.promo);
+      $('[data-price="save"]', card).textContent   = "Hemat " + rupiah(p.normal - p.promo);
+    });
+
+    /* [REV-2] angka "hemat hingga X%" di section promo, dari config */
+    var maxPct = 0;
+    Object.keys(cfg.pricing).forEach(function (k) {
+      var p = cfg.pricing[k];
+      var pct = Math.floor((1 - p.promo / p.normal) * 100);
+      if (pct > maxPct) maxPct = pct;
+    });
+    var bigNum = $("#ark-promo-big-num");
+    if (bigNum) bigNum.textContent = maxPct;
+
+    var sel = $("#ark-f-plan");
+    if (sel) {
+      sel.innerHTML = "";
+      Object.keys(cfg.pricing).forEach(function (k) {
+        var p = cfg.pricing[k];
+        var o = document.createElement("option");
+        o.value = k;
+        o.textContent = p.nama + " — " + rupiah(p.promo);
+        sel.appendChild(o);
+      });
+      sel.value = "professional";
+    }
+  }
+
+  /* =============================================================
+     ARKADEA WEB — COUNTDOWN PROMO (JS)
+     Target dari ARKADEA_CONFIG.promoEnd; tampilkan status bila habis.
+     ============================================================= */
+  function initCountdown() {
+    var wrap = $("#ark-countdown");
+    if (!wrap) return;
+    var target = new Date(ARKADEA_CONFIG.promoEnd).getTime();
+    function pad(n) { return String(n).padStart(2, "0"); }
+    function tick() {
+      var diff = target - Date.now();
+      if (isNaN(diff)) return;
+      if (diff <= 0) {
+        wrap.innerHTML = '<p class="ark-cd-end"><i class="fa-solid fa-hourglass-end"></i>&nbsp; Promo telah berakhir — hubungi kami untuk penawaran terbaru.</p>';
+        clearInterval(iv);
+        return;
+      }
+      var d = $("#ark-cd-d"), h = $("#ark-cd-h"), m = $("#ark-cd-m"), s = $("#ark-cd-s");
+      if (d) d.textContent = pad(Math.floor(diff / 86400000));
+      if (h) h.textContent = pad(Math.floor(diff / 3600000) % 24);
+      if (m) m.textContent = pad(Math.floor(diff / 60000) % 60);
+      if (s) s.textContent = pad(Math.floor(diff / 1000) % 60);
+    }
+    tick();
+    var iv = setInterval(tick, 1000);
+  }
+
+  /* =============================================================
+     ARKADEA WEB — NAVBAR (JS)
+     Tersembunyi di atas; muncul saat scroll (terutama scroll ke
+     bawah), hamburger mobile, smooth anchor, link aktif.
+     ============================================================= */
+  function initNavbar() {
+    var nav = $("#ark-navbar"), burger = $("#ark-burger"), menu = $("#ark-mobile-menu");
+    if (!nav) return;
+    var lastY = window.scrollY;
+
+    function onScroll() {
+      var y = window.scrollY, dy = y - lastY;
+      if (menu && menu.classList.contains("ark-open")) { lastY = y; return; }
+      if (y < 90)            nav.classList.remove("ark-nav-show");
+      else if (dy > 2)       nav.classList.add("ark-nav-show");      /* scroll bawah -> muncul */
+      else if (dy < -2 && y > 300) nav.classList.remove("ark-nav-show");
+      lastY = y;
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    if (burger && menu) {
+      burger.addEventListener("click", function () {
+        var open = menu.classList.toggle("ark-open");
+        burger.classList.toggle("ark-open", open);
+        burger.setAttribute("aria-expanded", String(open));
+        if (open) nav.classList.add("ark-nav-show");
+      });
+      $$("a, button", menu).forEach(function (el) {
+        el.addEventListener("click", function () {
+          menu.classList.remove("ark-open");
+          burger.classList.remove("ark-open");
+          burger.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  }
+
+  /* smooth scroll untuk semua anchor internal */
+  function initSmooth() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      var id = a.getAttribute("href");
+      if (!id || id.length < 2) return;
+      var t = document.getElementById(id.slice(1));
+      if (!t) return;
+      e.preventDefault();
+      var top = t.getBoundingClientRect().top + window.scrollY - 78;
+      window.scrollTo({ top: Math.max(0, top), behavior: REDUCED ? "auto" : "smooth" });
+    });
+  }
+
+  /* highlight menu sesuai section yang sedang terlihat */
+  function initActiveLink() {
+    var links = $$(".ark-nav-links .ark-nav-link");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (l) {
+      var s = document.getElementById(l.getAttribute("href").slice(1));
+      if (s) map[s.id] = l;
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting && map[en.target.id]) {
+          links.forEach(function (l) { l.classList.remove("ark-active"); });
+          map[en.target.id].classList.add("ark-active");
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    Object.keys(map).forEach(function (k) { io.observe(map[k]); });
+  }
+
+  /* =============================================================
+     ARKADEA WEB — SISTEM ANIMASI (JS)
+     Reveal on-scroll, counter angka, typewriter, tilt 3D,
+     garis timeline, marquee (CSS). Semua menghormati reduced motion.
+     ============================================================= */
+  function initReveal() {
+    var els = $$("[data-reveal]");
+    if (REDUCED || !("IntersectionObserver" in window)) {
+      els.forEach(function (el) { el.classList.add("ark-in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("ark-in"); io.unobserve(en.target); }
+      });
+    }, { threshold: .12, rootMargin: "0px 0px -40px 0px" });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  function initCounters() {
+    var els = $$("[data-count]");
+    function fmt(v, dec) { return dec > 0 ? v.toFixed(dec) : Math.round(v).toLocaleString("id-ID"); }
+    function run(el) {
+      var target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.decimals || "0", 10);
+      if (REDUCED) { el.textContent = fmt(target, dec); return; }
+      var t0 = performance.now(), dur = 1500;
+      (function step(t) {
+        var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * e, dec);
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    }
+    if (!("IntersectionObserver" in window)) { els.forEach(run); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } });
+    }, { threshold: .5 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  function initTypewriter() {
+    var el = $("#ark-typewriter");
+    if (!el) return;
+    var words = ARKADEA_CONFIG.typeWords || [];
+    if (!words.length) return;
+    if (REDUCED) { el.textContent = words[0]; return; }
+    var wi = 0, ci = 0, deleting = false;
+    (function loop() {
+      var word = words[wi];
+      ci += deleting ? -1 : 1;
+      el.textContent = word.slice(0, ci);
+      var delay = deleting ? 36 : 72;
+      if (!deleting && ci === word.length) { delay = 1700; deleting = true; }
+      else if (deleting && ci === 0) { deleting = false; wi = (wi + 1) % words.length; delay = 380; }
+      setTimeout(loop, delay);
+    })();
+  }
+
+  function initTilt() {
+    if (REDUCED || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    $$(".ark-tilt").forEach(function (el) {
+      var max = parseFloat(el.dataset.tiltMax || "6");
+      el.addEventListener("mousemove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5;
+        var y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = "perspective(850px) rotateX(" + (-y * max).toFixed(2) + "deg) rotateY(" + (x * max).toFixed(2) + "deg)";
+      });
+      el.addEventListener("mouseleave", function () { el.style.transform = ""; });
+    });
+  }
+
+  function initTimeline() {
+    var tl = $("#ark-timeline"), fill = $("#ark-tl-fill");
+    if (!tl || !fill) return;
+    function update() {
+      var r = tl.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, (window.innerHeight * .72 - r.top) / r.height));
+      fill.style.height = (p * 100).toFixed(2) + "%";
+    }
+    window.addEventListener("scroll", function () { requestAnimationFrame(update); }, { passive: true });
+    update();
+    var steps = $$(".ark-step");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { if (en.isIntersecting) en.target.classList.add("ark-active"); });
+      }, { threshold: .55 });
+      steps.forEach(function (s) { io.observe(s); });
+    } else steps.forEach(function (s) { s.classList.add("ark-active"); });
+  }
+
+  /* =============================================================
+     ARKADEA WEB — EXPERIENCE SLIDER + PARALLAX (JS)  [REV-1]
+     Slider: autoplay ping-pong, prev/next, dots, drag/swipe,
+     berhenti saat hover/focus. GAP wajib sama dengan gap CSS
+     .ark-exp-track (22px). Parallax: ornamen & avatar bergerak
+     beda kecepatan saat halaman di-scroll.
+     ============================================================= */
+  function initExpSlider() {
+    var viewport = $("#ark-exp-viewport"), track = $("#ark-exp-track");
+    if (!viewport || !track) return;
+    var slides = $$(".ark-exp-slide", track);
+    var prev = $("#ark-exp-prev"), next = $("#ark-exp-next"), dotsWrap = $("#ark-exp-dots");
+    var GAP = 22, index = 0, dir = 1, perView = 3, autoTimer = null;
+
+    function calcPerView() { var w = window.innerWidth; perView = w > 920 ? 3 : w > 600 ? 2 : 1; }
+    function maxIndex() { return Math.max(0, slides.length - perView); }
+    function stepWidth() { return slides[0].getBoundingClientRect().width + GAP; }
+
+    function buildDots() {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = "";
+      for (var i = 0; i <= maxIndex(); i++) {
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "ark-exp-dot";
+        b.setAttribute("aria-label", "Tampilkan pengalaman slide " + (i + 1));
+        (function (k) { b.addEventListener("click", function () { dir = 1; goTo(k); restartAuto(); }); })(i);
+        dotsWrap.appendChild(b);
+      }
+    }
+    function paint() {
+      track.style.transform = "translateX(" + (-index * stepWidth()) + "px)";
+      if (dotsWrap) $$(".ark-exp-dot", dotsWrap).forEach(function (d, k) { d.classList.toggle("ark-active", k === index); });
+    }
+    function goTo(i) { index = Math.max(0, Math.min(i, maxIndex())); paint(); }
+    function step() { if (index >= maxIndex()) dir = -1; if (index <= 0) dir = 1; goTo(index + dir); }
+    function startAuto() { if (REDUCED || autoTimer || maxIndex() === 0) return; autoTimer = setInterval(function () { if (!document.hidden) step(); }, 4600); }
+    function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+    function restartAuto() { stopAuto(); startAuto(); }
+
+    if (prev) prev.addEventListener("click", function () { dir = -1; goTo(index - 1); restartAuto(); });
+    if (next) next.addEventListener("click", function () { dir = 1; goTo(index + 1); restartAuto(); });
+    viewport.addEventListener("mouseenter", stopAuto);
+    viewport.addEventListener("mouseleave", startAuto);
+    viewport.addEventListener("focusin", stopAuto);
+    viewport.addEventListener("focusout", startAuto);
+
+    /* drag / swipe (pointer events) */
+    var dragging = false, startX = 0, baseX = 0, axis = null;
+    viewport.addEventListener("pointerdown", function (e) {
+      dragging = true; startX = e.clientX; baseX = -index * stepWidth(); axis = null;
+      track.classList.add("ark-dragging"); viewport.classList.add("ark-grabbing");
+      try { viewport.setPointerCapture(e.pointerId); } catch (err) {}
+      stopAuto();
+    });
+    viewport.addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (axis === null && Math.abs(dx) > 8) axis = "x";
+      if (axis === "x") { e.preventDefault(); track.style.transform = "translateX(" + (baseX + dx) + "px)"; }
+    });
+    function endDrag(e) {
+      if (!dragging) return;
+      dragging = false; axis = null;
+      track.classList.remove("ark-dragging"); viewport.classList.remove("ark-grabbing");
+      var dx = e.clientX - startX;
+      var delta = Math.round(-dx / stepWidth());
+      if (Math.abs(dx) > 6) dir = dx < 0 ? 1 : -1;
+      goTo(index + delta);
+      startAuto();
+    }
+    viewport.addEventListener("pointerup", endDrag);
+    viewport.addEventListener("pointercancel", endDrag);
+    viewport.addEventListener("dragstart", function (e) { e.preventDefault(); });
+
+    var rT;
+    window.addEventListener("resize", function () {
+      clearTimeout(rT);
+      rT = setTimeout(function () { calcPerView(); buildDots(); goTo(index); startAuto(); }, 160);
+    });
+
+    calcPerView(); buildDots(); goTo(0); startAuto();
+  }
+
+  function initParallax() {
+    var sec = $("#ark-experience");
+    if (REDUCED || !sec) return;
+    var orbs = $$("[data-px]", sec), avs = $$(".ark-exp-avatar", sec), ticking = false;
+    function upd() {
+      var r = sec.getBoundingClientRect(), vh = window.innerHeight;
+      if (r.bottom > -120 && r.top < vh + 120) {
+        var off = (r.top + r.height / 2) - (vh / 2);
+        orbs.forEach(function (o) { o.style.transform = "translateY(" + (off * parseFloat(o.dataset.px || "0")).toFixed(1) + "px)"; });
+        var av = Math.max(-6, Math.min(6, off * 0.05));
+        avs.forEach(function (a) { a.style.transform = "translateY(" + av.toFixed(1) + "px)"; });
+      }
+      ticking = false;
+    }
+    window.addEventListener("scroll", function () { if (!ticking) { requestAnimationFrame(upd); ticking = true; } }, { passive: true });
+    upd();
+  }
+
+  /* =============================================================
+     ARKADEA WEB — SCROLL FX (JS)
+     Progress bar atas + tombol back-to-top.
+     ============================================================= */
+  function initScrollFx() {
+    var bar = $("#ark-progress-bar"), totop = $("#ark-totop"), ticking = false;
+    function upd() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      if (bar) bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+      if (totop) totop.classList.toggle("ark-show", window.scrollY > 560);
+      ticking = false;
+    }
+    window.addEventListener("scroll", function () {
+      if (!ticking) { requestAnimationFrame(upd); ticking = true; }
+    }, { passive: true });
+    upd();
+    if (totop) totop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: REDUCED ? "auto" : "smooth" });
+    });
+  }
+
+  /* =============================================================
+     ARKADEA WEB — PORTFOLIO FILTER (JS)
+     ============================================================= */
+  function initPortfolio() {
+    var btns = $$(".ark-filter-btn"), cards = $$(".ark-port-card");
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.classList.remove("ark-active"); });
+        b.classList.add("ark-active");
+        var f = b.dataset.filter;
+        cards.forEach(function (c) {
+          var show = f === "all" || c.dataset.cat === f;
+          c.classList.toggle("ark-gone", !show);
+          if (show && !REDUCED) {
+            c.classList.remove("ark-pop"); void c.offsetWidth; c.classList.add("ark-pop");
+          }
+        });
+      });
+    });
+  }
+
+  /* =============================================================
+     ARKADEA WEB — FAQ ACCORDION (JS)
+     ============================================================= */
+  function initFaq() {
+    $$(".ark-faq-item").forEach(function (item) {
+      var btn = $(".ark-faq-q", item);
+      btn.addEventListener("click", function () {
+        var wasOpen = item.classList.contains("ark-open");
+        $$(".ark-faq-item.ark-open").forEach(function (o) {
+          o.classList.remove("ark-open");
+          $(".ark-faq-q", o).setAttribute("aria-expanded", "false");
+        });
+        if (!wasOpen) { item.classList.add("ark-open"); btn.setAttribute("aria-expanded", "true"); }
+      });
+    });
+  }
+
+  /* =============================================================
+     ARKADEA WEB — EFEK BELI SEKARANG (JS)
+     Ripple tombol + particle burst singkat di titik klik.
+     ============================================================= */
+  function burst(x, y) {
+    if (REDUCED) return;
+    var host = $("#ark-page") || document.body;
+    var colors = ["#2563EB", "#06B6D4", "#60A5FA", "#A5F3FC", "#FFFFFF"];
+    for (var i = 0; i < 14; i++) {
+      var p = document.createElement("span");
+      p.className = "ark-burst-part";
+      var ang = Math.random() * Math.PI * 2, dist = 42 + Math.random() * 55;
+      p.style.left = x + "px"; p.style.top = y + "px";
+      p.style.background = colors[i % colors.length];
+      p.style.setProperty("--bx", (Math.cos(ang) * dist).toFixed(1) + "px");
+      p.style.setProperty("--by", (Math.sin(ang) * dist).toFixed(1) + "px");
+      p.addEventListener("animationend", function () { this.remove(); });
+      host.appendChild(p);
+    }
+  }
+  function ripple(btn, e) {
+    if (REDUCED) return;
+    var r = btn.getBoundingClientRect(), s = Math.max(r.width, r.height) * 1.7;
+    var sp = document.createElement("span");
+    sp.className = "ark-ripple";
+    sp.style.width = sp.style.height = s + "px";
+    sp.style.left = ((e.clientX || r.left + r.width / 2) - r.left - s / 2) + "px";
+    sp.style.top  = ((e.clientY || r.top + r.height / 2) - r.top - s / 2) + "px";
+    btn.appendChild(sp);
+    sp.addEventListener("animationend", function () { sp.remove(); });
+  }
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".ark-btn") : null;
+    if (btn) ripple(btn, e);
+    var buy = e.target.closest ? e.target.closest("[data-buy]") : null;
+    if (buy) {
+      var r = buy.getBoundingClientRect();
+      burst(e.clientX || (r.left + r.width / 2), e.clientY || (r.top + r.height / 2));
+      openModal(buy.dataset.buy || "professional");
+    }
+  });
+
+  /* =============================================================
+     ARKADEA WEB — CHECKOUT MODAL + VOUCHER + WHATSAPP (JS)
+     Alur harga: harga promo -> potongan voucher -> total akhir.
+     ============================================================= */
+  var state = { plan: "professional", voucher: null, voucherCode: "" };
+
+  function priceOf(plan) { return ARKADEA_CONFIG.pricing[plan]; }
+
+  function updateSummary() {
+    var p = priceOf(state.plan);
+    if (!p) return null;
+    var disc = state.voucher ? Math.min(state.voucher, p.promo) : 0;
+    var total = Math.max(p.promo - disc, 0);
+    $("#ark-sum-normal").textContent = rupiah(p.normal);
+    $("#ark-sum-promo").textContent  = rupiah(p.promo);
+    $("#ark-sum-disc").textContent   = disc > 0 ? "-" + rupiah(disc) : "—";
+    $("#ark-sum-total").textContent  = rupiah(total);
+    return { disc: disc, total: total };
+  }
+
+  function openModal(plan) {
+    var m = $("#ark-modal");
+    if (!m) return;
+    state.plan = priceOf(plan) ? plan : "professional";
+    var sel = $("#ark-f-plan");
+    if (sel) sel.value = state.plan;
+    $("#ark-modal-success").hidden = true;
+    $("#ark-checkout-form").hidden = false;
+    clearFormError();
+    updateSummary();
+    m.classList.add("ark-modal-open");
+    m.setAttribute("aria-hidden", "false");
+    document.documentElement.classList.add("ark-lock");
+    setTimeout(function () { var f = $("#ark-f-name"); if (f) f.focus(); }, 380);
+  }
+  function closeModal() {
+    var m = $("#ark-modal");
+    if (!m) return;
+    m.classList.remove("ark-modal-open");
+    m.setAttribute("aria-hidden", "true");
+    document.documentElement.classList.remove("ark-lock");
+  }
+
+  function applyVoucher() {
+    var input = $("#ark-f-voucher"), st = $("#ark-voucher-status");
+    var code = (input.value || "").trim().toUpperCase();
+    if (!code) { state.voucher = null; state.voucherCode = ""; st.textContent = ""; st.className = "ark-voucher-status"; updateSummary(); return; }
+    if (Object.prototype.hasOwnProperty.call(ARKADEA_CONFIG.vouchers, code)) {
+      state.voucher = ARKADEA_CONFIG.vouchers[code];
+      state.voucherCode = code;
+      st.innerHTML = '<i class="fa-solid fa-circle-check"></i> Voucher berhasil digunakan.';
+      st.className = "ark-voucher-status ark-vs-ok";
+    } else {
+      state.voucher = null; state.voucherCode = "";
+      st.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Kode voucher tidak valid.';
+      st.className = "ark-voucher-status ark-vs-err";
+    }
+    updateSummary();
+  }
+
+  function showFormError(msg) {
+    var el = $("#ark-form-error");
+    el.textContent = msg; el.classList.add("ark-show");
+  }
+  function clearFormError() {
+    var el = $("#ark-form-error");
+    if (el) { el.textContent = ""; el.classList.remove("ark-show"); }
+    $$(".ark-input-err").forEach(function (i) { i.classList.remove("ark-input-err"); });
+  }
+  function markErr(id) { var f = $(id); if (f) { f.classList.add("ark-input-err"); f.focus(); } }
+
+  function initCheckout() {
+    var m = $("#ark-modal");
+    if (!m) return;
+
+    $$("[data-close-modal]").forEach(function (el) { el.addEventListener("click", closeModal); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && m.classList.contains("ark-modal-open")) closeModal();
+    });
+
+    var sel = $("#ark-f-plan");
+    if (sel) sel.addEventListener("change", function () { state.plan = sel.value; updateSummary(); });
+
+    var vApply = $("#ark-voucher-apply");
+    if (vApply) vApply.addEventListener("click", applyVoucher);
+    var vInput = $("#ark-f-voucher");
+    if (vInput) {
+      vInput.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); applyVoucher(); } });
+      vInput.addEventListener("input", function () {
+        if (state.voucherCode && vInput.value.trim().toUpperCase() !== state.voucherCode) {
+          state.voucher = null; state.voucherCode = "";
+          $("#ark-voucher-status").textContent = "";
+          $("#ark-voucher-status").className = "ark-voucher-status";
+          updateSummary();
+        }
+      });
+    }
+
+    /* submit -> validasi -> pesan WhatsApp otomatis */
+    $("#ark-checkout-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearFormError();
+      var name  = $("#ark-f-name").value.trim();
+      var wa    = $("#ark-f-wa").value.trim();
+      var email = $("#ark-f-email").value.trim();
+      var digits = wa.replace(/\D/g, "");
+
+      if (name.length < 3) { showFormError("Nama minimal 3 karakter ya."); markErr("#ark-f-name"); return; }
+      if (digits.length < 9) { showFormError("Nomor WhatsApp tidak valid. Contoh: 085806326612."); markErr("#ark-f-wa"); return; }
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showFormError("Format email kurang tepat."); markErr("#ark-f-email"); return; }
+
+      var p = priceOf(state.plan), s = updateSummary();
+      var lines = [
+        "Halo *ARKADEA WEB*! 👋", "",
+        "Saya ingin memesan website:", "",
+        "👤 Nama: " + name,
+        "📱 WhatsApp: " + wa,
+        "📧 Email: " + (email || "-"),
+        "📦 Paket: " + p.nama,
+        "💰 Harga Normal: " + rupiah(p.normal),
+        "🏷️ Harga Promo: " + rupiah(p.promo),
+        state.voucherCode ? "🎟️ Voucher: " + state.voucherCode + " (-" + rupiah(s.disc) + ")" : "🎟️ Voucher: -",
+        "✅ Total: " + rupiah(s.total), "",
+        "Mohon diproses ya, terima kasih! 🙏"
+      ];
+      var url = waLink() + "?text=" + encodeURIComponent(lines.join("\n"));
+      window.open(url, "_blank", "noopener");
+
+      $("#ark-checkout-form").hidden = true;
+      $("#ark-modal-success").hidden = false;
+      showToast('Kamu baru saja memilih paket <span class="ark-hl">' + p.nama + '</span>. Pesanan diteruskan ke WhatsApp.', { demo: false, icon: "fa-circle-check" });
+      setTimeout(function () { closeModal(); }, 2000);
+    });
+  }
+
+  /* =============================================================
+     ARKADEA WEB — TOAST NOTIFIKASI (JS)
+     Nama & paket berwarna biru sky + bold (.ark-hl) + ikon.
+     Data berkala = SIMULASI (ditandai label "Simulasi").
+     ============================================================= */
+  var toastTimer = null;
+  function showToast(html, opts) {
+    opts = opts || {};
+    var t = $("#ark-toast");
+    if (!t) return;
+    $("#ark-toast-msg").innerHTML = html;
+    $(".ark-toast-ico i", t).className = "fa-solid " + (opts.icon || "fa-bag-shopping");
+    $("#ark-toast-tag").style.display = opts.demo ? "" : "none";
+    t.classList.remove("ark-toast-show"); void t.offsetWidth;
+    t.classList.add("ark-toast-show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("ark-toast-show"); }, 5200);
+  }
+  function initFakeToast() {
+    var cfg = ARKADEA_CONFIG.toast;
+    if (!cfg || !cfg.events || !cfg.events.length) return;
+    var i = 0;
+    function next() {
+      var ev = cfg.events[i % cfg.events.length]; i++;
+      showToast('<span class="ark-hl">' + ev.name + '</span> baru saja memilih paket <span class="ark-hl">' + ev.plan + '</span>.', { demo: true, icon: "fa-bag-shopping" });
+    }
+    setTimeout(function () {
+      next();
+      setInterval(function () { if (!document.hidden) next(); }, cfg.interval || 16000);
+    }, cfg.firstDelay || 7000);
+  }
+
+  /* ---------- jalankan semua ---------- */
+  initConfig();
+  initNavbar();
+  initSmooth();
+  initActiveLink();
+  initReveal();
+  initCounters();
+  initTypewriter();
+  initTilt();
+  initTimeline();
+  initScrollFx();
+  initPortfolio();
+  initFaq();
+  initCheckout();
+  initCountdown();
+  initExpSlider();
+  initParallax();
+  initFakeToast();
+
+})();
+</script>
+</body>
+</html>
